@@ -1,5 +1,5 @@
 package com.letung.parkinglot.model
 
 class asasda {
-    var khoa: String
+    var khoa: String = ""
 }
