@@ -14,16 +14,22 @@
         android:theme="@style/DefaultTheme"
         tools:targetApi="31">
         <activity
-            android:name=".fillInformation"
-            android:exported="false" />
-        <activity
-            android:name=".feature.main.MainActivity"
-            android:exported="true">
+            android:name=".feature.customer.passer.fill_information.fillInformation"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".feature.main.MainActivity"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 
