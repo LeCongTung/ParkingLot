@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.customer.passer.fill_information.fillInformation">
+    <RelativeLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_passer_header"
+        android:paddingVertical="15dp"
+        android:elevation="20dp"
+        android:paddingHorizontal="10dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:src="@drawable/ic_passer_header_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Nhận thông tin người đăng ký ô đỗ"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_passer_body"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="30dp"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:drawableStart="@drawable/ic_passer_body_name"
+            android:drawablePadding="10dp"
+            android:hint="Tên người dùng"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:drawableStart="@drawable/ic_passer_body_name"
+            android:drawablePadding="10dp"
+            android:hint="Số điện thoại"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"
+            android:inputType="number"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:drawableStart="@drawable/ic_passer_body_name"
+            android:drawablePadding="10dp"
+            android:hint="CCCD/ CMND"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"
+            android:inputType="number"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:drawableStart="@drawable/ic_passer_body_name"
+            android:drawablePadding="10dp"
+            android:hint="Biển số xe"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:drawableStart="@drawable/ic_passer_body_name"
+            android:drawablePadding="10dp"
+            android:hint="Loại xe"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"/>
+    </LinearLayout>
+</RelativeLayout>
