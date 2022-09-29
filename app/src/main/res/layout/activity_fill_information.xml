@@ -48,11 +48,11 @@
         android:layout_centerInParent="true">
 
         <LinearLayout
-            android:layout_marginTop="20dp"
             android:id="@+id/layout_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_passer_body"
             android:elevation="40dp"
             android:orientation="vertical"
@@ -144,6 +144,7 @@
                 android:paddingStart="40dp" />
 
             <Button
+                android:id="@+id/btn_continue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_passer_body_btn"
