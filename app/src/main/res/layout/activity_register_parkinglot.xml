@@ -32,78 +32,147 @@
     </RelativeLayout>
 
 
-        <LinearLayout
-            android:id="@+id/layout_choose"
-            android:layout_below="@+id/layout_top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="20dp"
-            android:background="@drawable/bg_passer_body"
-            android:elevation="20dp"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="15dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:text="CHỌN MỐC THỜI GIAN"
-                android:textColor="@color/mainColor"
-                android:textSize="19sp"
-                android:textAlignment="center"/>
-
-            <EditText
-                android:id="@+id/edt_startTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:background="@drawable/bg_passer_body_textbox"
-                android:text="Thời gian bắt đầu"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:layout_marginVertical="10dp"
-                android:focusable="false"/>
-
-            <TextView
-                android:id="@+id/tv_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:text="--- ĐẾN ---"
-                android:textColor="@color/mainColor"
-                android:textSize="19sp"
-                android:textAlignment="center"/>
-            <EditText
-                android:id="@+id/edt_endTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:background="@drawable/bg_passer_body_textbox"
-                android:text="Thời gian kết thúc"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:layout_marginVertical="10dp"
-                android:focusable="false"/>
-
-            <Button
-                android:id="@+id/btn_continue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_passer_body_btn"
-                android:fontFamily="@font/roboto_bold"
-                android:text="CHỌN"
-                android:textColor="@color/white"
-                android:layout_marginHorizontal="50dp"/>
-        </LinearLayout>
     <ScrollView
         android:id="@+id/layout_pickSlot"
-        android:layout_below="@+id/layout_choose"
+        android:layout_below="@+id/layout_top"
+        android:layout_above="@+id/layout_choose"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
     </ScrollView>
+    <LinearLayout
+        android:id="@+id/layout_choose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/bg_passer_body"
+        android:elevation="20dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Chọn ngày đỗ"
+            android:textColor="@color/mainColor"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edt_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:focusable="false"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="10dp"
+            android:text="Ngày"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Thời gian bắt đầu đỗ: "
+            android:textColor="@color/mainColor"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edt_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:focusable="false"
+            android:fontFamily="@font/roboto_bold"
+            android:padding="10dp"
+            android:text="Thời gian"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Số giờ đỗ: "
+            android:textColor="@color/mainColor"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgBtn_muiltiArrowUp_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/bg_passer_body_btn"
+                android:padding="5dp"
+                android:rotation="180"
+                android:src="@drawable/ic_register_body_multiarrow"
+                app:tint="@color/white" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_arrowDownBack_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/bg_passer_body_btn"
+                android:padding="5dp"
+                android:src="@drawable/ic_passer_arrowback" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/mainColor"
+                android:textSize="25sp" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_arrowUp_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/bg_passer_body_btn"
+                android:padding="5dp"
+                android:rotation="180"
+                android:src="@drawable/ic_passer_arrowback" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_muiltiArrowUp_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/bg_passer_body_btn"
+                android:padding="5dp"
+                android:src="@drawable/ic_register_body_multiarrow"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:background="@drawable/bg_passer_body_btn"
+            android:fontFamily="@font/roboto_bold"
+            android:text="TIẾP TỤC"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
 </RelativeLayout>

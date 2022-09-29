@@ -11,93 +11,120 @@ import android.widget.TimePicker
 import android.widget.Toast
 import com.letung.parkinglot.R
 import kotlinx.android.synthetic.main.activity_register_parkinglot.*
+import android.text.format.DateFormat
 import java.util.*
 
-class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-
+class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
+    TimePickerDialog.OnTimeSetListener {
     var day = 0
-    var month = 0
-    var year = 0
-    var hour = 0
-    var minute = 0
-
-    var savedDay = 0
-    var savedMonth = 0
-    var savedYear = 0
-    var savedHour = 0
-    var savedMinute = 0
-
-    var day_endTime = 0
-    var month_endTime = 0
-    var year_endTime = 0
-    var hour_endTime = 0
-    var minute_endTime = 0
-
-    var savedDay_endTime = 0
-    var savedMonth_endTime = 0
-    var savedYear_endTime = 0
-    var savedHour_endTime = 0
-    var savedMinute_endTime = 0
+    var month: Int = 0
+    var year: Int = 0
+    var hour: Int = 0
+    var minute: Int = 0
+    var myDay = 0
+    var myMonth: Int = 0
+    var myYear: Int = 0
+    var myHour: Int = 0
+    var myMinute: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_parkinglot)
 
-
         pickDate()
-        pickDate_endTime()
+        pickTime()
+        pickHour()
     }
 
-    private fun getDateTimeCalendar(){
-        val cal = Calendar.getInstance()
-        day = cal.get(Calendar.DAY_OF_MONTH)
-        month = cal.get(Calendar.MONTH)
-        year = cal.get(Calendar.YEAR)
-        hour = cal.get(Calendar.HOUR)
-        minute = cal.get(Calendar.MINUTE)
-
-
-    }
-
-    private fun getDateTimeCalendar_endTime(){
-        val cal = Calendar.getInstance()
-        day_endTime = cal.get(Calendar.DAY_OF_MONTH)
-        month_endTime = cal.get(Calendar.MONTH)
-        year_endTime = cal.get(Calendar.YEAR)
-        hour_endTime = cal.get(Calendar.HOUR)
-        minute_endTime = cal.get(Calendar.MINUTE)
-
-
-    }
-
-    private fun pickDate(){
-        edt_startTime.setOnClickListener{
-            getDateTimeCalendar()
-            DatePickerDialog(this, this, year, month, day).show()
+    private fun pickDate() {
+        edt_day.setOnClickListener {
+            val calendar: Calendar = Calendar.getInstance()
+            day = calendar.get(Calendar.DAY_OF_MONTH)
+            month = calendar.get(Calendar.MONTH)
+            year = calendar.get(Calendar.YEAR)
+            val datePickerDialog =
+                DatePickerDialog(this, this, year, month, day)
+            datePickerDialog.show()
         }
     }
 
-    private fun pickDate_endTime(){
-        edt_endTime.setOnClickListener{
-            getDateTimeCalendar_endTime()
-            DatePickerDialog(this, this, year_endTime, month_endTime, day_endTime).show()
+    private fun pickTime() {
+        edt_time.setOnClickListener {
+            val calendar: Calendar = Calendar.getInstance()
+            hour = calendar.get(Calendar.HOUR)
+            minute = calendar.get(Calendar.MINUTE)
+            val timePickerDialog =
+                TimePickerDialog(this, this, hour, minute, DateFormat.is24HourFormat(this))
+            timePickerDialog.show()
+        }
+    }
+
+    private fun pickHour() {
+//        var hourParking = 1
+        var hourParking = tv_time.text.toString().toInt()
+        imgBtn_arrowUp_add.setOnClickListener {
+            if (hourParking >= 48) {
+                Toast.makeText(this, "Nhiều nhất là 48", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                hourParking++
+                //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
+            }
+            tv_time.text = "${hourParking}"
+        }
+
+        imgBtn_muiltiArrowUp_add.setOnClickListener {
+            if (hourParking >= 42) {
+                Toast.makeText(this, "Nhiều nhất là 48 giờ", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+
+                hourParking += 6
+                //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
+            }
+            tv_time.text = "${hourParking}"
+        }
+
+        imgBtn_arrowDownBack_minus.setOnClickListener {
+            if (hourParking == 1) {
+                Toast.makeText(this, "Ít nhất là 1 giờ", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                hourParking--
+                //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
+            }
+            tv_time.text = "${hourParking}"
+        }
+
+        imgBtn_muiltiArrowUp_minus.setOnClickListener {
+            if (hourParking <= 6) {
+                Toast.makeText(this, "Ít nhất là 1 giờ", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+
+                hourParking -= 6
+                //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
+            }
+            tv_time.text = "${hourParking}"
         }
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        savedDay = dayOfMonth
-        savedMonth = month + 1
-        savedYear = year
-        getDateTimeCalendar()
-        getDateTimeCalendar_endTime()
-        TimePickerDialog(this, this, hour, minute, true).show()
+        myDay = day
+        myYear = year
+        myMonth = month + 1
+////        val calendar: Calendar = Calendar.getInstance()
+////        hour = calendar.get(Calendar.HOUR)
+////        minute = calendar.get(Calendar.MINUTE)
+//        val timePickerDialog = TimePickerDialog(this, this, hour, minute, DateFormat.is24HourFormat(this))
+//        timePickerDialog.show()
+        edt_day.setText("$myDay" + "/" + "$myMonth" + "/" + "$myYear")
 
     }
 
-
-    @SuppressLint("SetTextI18n")
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        savedHour = hourOfDay
-        savedMinute = minute
-        edt_startTime.setText("$savedHour" + "h" + "$savedMinute - $savedDay/ $savedMonth/ $savedYear")
+        myHour = hourOfDay
+        myMinute = minute
+        edt_time.setText("$myHour" + "h" + "$myMinute")
+
     }
 }
