@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "949212257754",
+    "firebase_url": "https://parkinglot-80c0d-default-rtdb.firebaseio.com",
+    "project_id": "parkinglot-80c0d",
+    "storage_bucket": "parkinglot-80c0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949212257754:android:21303cd14fa5a8a35c34e3",
+        "android_client_info": {
+          "package_name": "com.letung.parkinglot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949212257754-39rcrm7pbfvlibflv3tuekjlk157h2oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGpidMahDK1XC-QTepjwqzM1t4g1NeN4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949212257754-39rcrm7pbfvlibflv3tuekjlk157h2oq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
