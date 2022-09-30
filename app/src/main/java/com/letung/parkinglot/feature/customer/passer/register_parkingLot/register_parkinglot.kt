@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.letung.parkinglot.R
 import kotlinx.android.synthetic.main.activity_register_parkinglot.*
 import android.text.format.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
@@ -43,6 +44,8 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             year = calendar.get(Calendar.YEAR)
             val datePickerDialog =
                 DatePickerDialog(this, this, year, month, day)
+            //datePickerDialog.show()
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000)
             datePickerDialog.show()
         }
     }
@@ -109,7 +112,7 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        myDay = day
+        myDay = dayOfMonth
         myYear = year
         myMonth = month + 1
 ////        val calendar: Calendar = Calendar.getInstance()
@@ -118,13 +121,36 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
 //        val timePickerDialog = TimePickerDialog(this, this, hour, minute, DateFormat.is24HourFormat(this))
 //        timePickerDialog.show()
         edt_day.setText("$myDay" + "/" + "$myMonth" + "/" + "$myYear")
-
     }
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         myHour = hourOfDay
         myMinute = minute
-        edt_time.setText("$myHour" + "h" + "$myMinute")
+        val edt = "$myHour:$myMinute"
+        if(!compareTwoTimes(getCurrentTime()!!,edt))
+        {
+            Toast.makeText(this, "Đặt chỗ bắt đầu từ thời gian hiện tại", Toast.LENGTH_SHORT).show()
+            //edt_time.setText("Thời gian")
+        }
+        else  {
+            edt_time.setText("$myHour" + "h" + "$myMinute")
+        }
+
 
     }
+    private fun getCurrentTime(): String? {
+        val simpleDateFormat = SimpleDateFormat("hh:mm")
+        return simpleDateFormat.format(Calendar.getInstance().time)
+    }
+    fun compareTwoTimes(fromTime: String,currentTime : String): Boolean {
+        val sdf = SimpleDateFormat("hh:mm")
+        val time1 = sdf.parse(fromTime)
+        val time2 = sdf.parse(currentTime)
+        if(!time2!!.before(time1)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
