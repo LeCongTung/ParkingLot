@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ParkingLot</string>
+    <!--    <string-array name="carType">-->
+    <!--        <item>5 chỗ</item>-->
+    <!--        <item>7 chỗ</item>-->
+    <!--        <item>9 chỗ</item>-->
+    <!--        <item>16 chỗ</item>-->
+    <!--    </string-array>-->
 </resources>
