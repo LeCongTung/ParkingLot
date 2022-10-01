@@ -1,8 +1,10 @@
 package com.letung.parkinglot.feature.parking
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -11,6 +13,7 @@ import com.letung.parkinglot.R
 import com.letung.parkinglot.feature.parking.adapter.ParkingAdapter
 import com.letung.parkinglot.model.Slot
 import kotlinx.android.synthetic.main.activity_parking.*
+import kotlinx.android.synthetic.main.dialog_floor_area.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -66,7 +69,22 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
         })
     }
 
+    private fun showDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_floor_area)
+        declineButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        acceptButton.setOnClickListener {
+
+        }
+        dialog.show()
+
+    }
 
     override fun didClickSlot() {
+        showDialog()
     }
 }

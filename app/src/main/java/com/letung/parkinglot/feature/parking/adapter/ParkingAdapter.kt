@@ -19,7 +19,7 @@ class ParkingAdapter(
     var parkingSlotList: ArrayList<Slot>
 ): RecyclerView.Adapter<ParkingAdapter.MyViewHolder>() {
     interface onSlotListener{
-        fun didClickSlot()
+        fun didClickSlot(item: Slot)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
@@ -47,8 +47,10 @@ class ParkingAdapter(
                 holder.itemView.iconCar.setColorFilter(context.resources.getColor(R.color.supportBlue), PorterDuff.Mode.SRC_IN)
                 holder.itemView.positionTextView.setBackgroundColor(ContextCompat.getColor(context, R.color.supportBlue))
             }
+        }
 
-
+        holder.itemView.itemSlot.setOnClickListener {
+            listener.didClickSlot(item)
         }
     }
 
