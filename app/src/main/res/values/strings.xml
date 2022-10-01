@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ParkingLot</string>
+    <string name="testView">aaa123$%^</string>
+    <string name="timeKiem">Tìm kiếm</string>
     <!--    <string-array name="carType">-->
     <!--        <item>5 chỗ</item>-->
     <!--        <item>7 chỗ</item>-->

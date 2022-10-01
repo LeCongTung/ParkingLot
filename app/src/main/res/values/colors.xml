@@ -12,4 +12,10 @@
     <color name="mainColor">#5536fe</color>
     <color name="textBox">#f0f4ff</color>
     <color name="stroke">#a8a8a8</color>
+
+    <color name="mainBlue">#3047D8</color>
+    <color name="supportBlue">#4C58A3</color>
+    <color name="supportRed">#FF001D</color>
+    <color name="supportyellow">#C1B01F</color>
+    <color name="clearColor">#00FFFFFF</color>
 </resources>

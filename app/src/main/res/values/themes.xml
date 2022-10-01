@@ -16,13 +16,16 @@
 
     <style name="DefaultTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
 
-        <item name="android:statusBarColor">@color/mainColor</item>
+        <item name="android:statusBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
 
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="colorSecondaryVariant">@color/mainColor</item>
 
+    </style>
 
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/mainColor</item>
     </style>
 </resources>
