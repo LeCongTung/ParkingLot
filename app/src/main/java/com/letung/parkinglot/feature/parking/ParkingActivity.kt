@@ -113,4 +113,8 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
         showDialog(item)
         Log.d("tung","${item.position} - ${item.status}")
     }
+
+    override fun didClickSlot(item: Slot) {
+        TODO("Not yet implemented")
+    }
 }
