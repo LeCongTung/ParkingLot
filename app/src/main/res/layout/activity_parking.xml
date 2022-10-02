@@ -51,8 +51,8 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/bg_corner_top"
         android:backgroundTint="@color/supportBlue"
-        android:padding="10dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="10dp">
 
         <Button
             android:id="@+id/searchButton"
