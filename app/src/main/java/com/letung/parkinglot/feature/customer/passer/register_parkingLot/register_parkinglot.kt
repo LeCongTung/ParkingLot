@@ -61,18 +61,24 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun pickHour() {
 //        var hourParking = 1
         var hourParking = tv_time.text.toString().toInt()
+        var slotMoney = 30000
+        var total = slotMoney
+        tv_payment.text = "${slotMoney} đồng/${hourParking} giờ"
         imgBtn_arrowUp_add.setOnClickListener {
             if (hourParking >= 48) {
                 Toast.makeText(this, "Nhiều nhất là 48", Toast.LENGTH_SHORT)
                     .show()
             } else {
                 hourParking++
+                total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
             tv_time.text = "${hourParking}"
+            tv_payment.text = "${total} đồng/${hourParking} giờ"
         }
 
         imgBtn_muiltiArrowUp_add.setOnClickListener {
@@ -82,9 +88,11 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             } else {
 
                 hourParking += 6
+                total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
             tv_time.text = "${hourParking}"
+            tv_payment.text = "${total} đồng/${hourParking} giờ"
         }
 
         imgBtn_arrowDownBack_minus.setOnClickListener {
@@ -93,9 +101,11 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
                     .show()
             } else {
                 hourParking--
+                total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
             tv_time.text = "${hourParking}"
+            tv_payment.text = "${total} đồng/${hourParking} giờ"
         }
 
         imgBtn_muiltiArrowUp_minus.setOnClickListener {
@@ -105,9 +115,11 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             } else {
 
                 hourParking -= 6
+                total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
             tv_time.text = "${hourParking}"
+            tv_payment.text = "${total} đồng/${hourParking} giờ"
         }
     }
 
