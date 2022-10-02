@@ -4,18 +4,49 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.212" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/bg_passer_body.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/bg_passer_body_btn.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/bg_passer_body_spinner.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/bg_passer_body_textbox.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/bg_passer_header.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_arrowdown.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_cartype.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_identity.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_identitycar.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_name.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_phone.xml" value="0.2045" />
         <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_launcher_background.xml" value="0.212" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_arrowback.xml" value="0.202" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_arrow.xml" value="0.202" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_arrowdown.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_arrowdown_focused.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_arrowup.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_cartype.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_cartype_focused.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_identity.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_identity_focused.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_identitycar.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_identitycar_focused.xml" value="0.2045" />
         <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_name.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_name_focused.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_phone.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_body_phone_focused.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_header_back.xml" value="0.202" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_passer_identity.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_register_body_arrowdown.xml" value="0.214" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_register_body_arrowup.xml" value="0.214" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_register_body_multiarrow.xml" value="0.202" />
         <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/passer_bg_body.xml" value="0.2045" />
         <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/passer_bg_header.xml" value="0.2045" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/drawable/passer_layout_dropdown_item.xml" value="0.2045" />
         <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/layout/activity_fill_information.xml" value="0.264" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/drawable/bg_circle_white.xml" value="0.229" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/drawable/bg_corner_bottom.xml" value="0.229" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/drawable/bg_passer_body_btn.xml" value="0.229" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/layout/activity_parking.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/layout/activity_register_parkinglot.xml" value="0.264" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/layout/dialog_floor_area.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/layout/item_slot.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android/Exercise/ParkingLot/app/src/main/res/layout/passer_layout_dropdown_item.xml" value="0.253125" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_main.xml" value="0.20208333333333334" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_parking.xml" value="0.3814814814814815" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/dialog_floor_area.xml" value="0.3875" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/item_slot.xml" value="0.38645833333333335" />
       </map>
     </option>
   </component>

@@ -38,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_top"
         android:layout_centerHorizontal="true"
-        android:layout_marginVertical="10dp"
         android:background="@drawable/ic_passer_identity" />
 
     <ScrollView

@@ -87,4 +87,8 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
     override fun didClickSlot() {
         showDialog()
     }
+
+    override fun didClickSlot(item: Slot) {
+        TODO("Not yet implemented")
+    }
 }
