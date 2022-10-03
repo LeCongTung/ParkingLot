@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">ParkingLot</string>
+    <string name="app_name">Tìm bãi đỗ xe</string>
     <string name="testView">aaa123$%^</string>
     <string name="timeKiem">Tìm kiếm</string>
+    <string name="attention">Khi đưa xe đến bãi\nQúy khách quét mã QR để xác nhận:</string>
     <!--    <string-array name="carType">-->
     <!--        <item>5 chỗ</item>-->
     <!--        <item>7 chỗ</item>-->
