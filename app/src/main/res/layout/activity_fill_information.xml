@@ -36,27 +36,30 @@
         android:id="@+id/img_identity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_top"
+        android:layout_above="@+id/layout_body"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/ic_passer_identity" />
+        android:src="@drawable/ic_img_information"
+        android:layout_below="@+id/layout_top"/>
 
     <ScrollView
+        android:id="@+id/layout_body"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/img_identity"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerInParent="true">
 
         <LinearLayout
-            android:id="@+id/layout_body"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_passer_body"
             android:elevation="40dp"
             android:orientation="vertical"
             android:paddingHorizontal="30dp"
-            android:paddingVertical="20dp">
+            android:paddingVertical="20dp"
+            android:layout_marginVertical="10dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
