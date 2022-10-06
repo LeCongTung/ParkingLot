@@ -1,7 +1,7 @@
 package com.letung.parkinglot.model
 
 data class Slot(
-    val position: String ?= null,
+    val position: Int ?= null,
     val status: String ? = null,
     val infoSlot: ArrayList<ParkingSlot> ?= null
 )

@@ -5,34 +5,41 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="50dp"
+
+    android:paddingBottom="20dp"
     android:background="@drawable/bg_passer_body_btn"
     android:backgroundTint="@color/white">
 
+    <TextView
+        android:id="@+id/positionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/testView"
+        android:background="@color/supportBlue"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
 
     <ImageView
         android:id="@+id/iconCar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_car_top_view"
         app:tint="@color/supportBlue" />
 
-    <TextView
-        android:id="@+id/positionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:padding="5dp"
-        android:text="@string/testView"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/statusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginVertical="10dp"
         android:padding="5dp"
         android:text="@string/testView"
         android:textColor="@color/black"

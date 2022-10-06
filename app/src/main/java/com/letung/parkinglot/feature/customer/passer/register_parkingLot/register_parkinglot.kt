@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.letung.parkinglot.R
 import kotlinx.android.synthetic.main.activity_register_parkinglot.*
 import android.text.format.DateFormat
+import com.letung.parkinglot.feature.invoice.InvoiceActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,6 +35,7 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         pickDate()
         pickTime()
         pickHour()
+        didClickToPickSlot()
     }
 
     private fun pickDate() {
@@ -44,8 +46,7 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
             year = calendar.get(Calendar.YEAR)
             val datePickerDialog =
                 DatePickerDialog(this, this, year, month, day)
-            //datePickerDialog.show()
-            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000)
+            datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
             datePickerDialog.show()
         }
     }
@@ -61,13 +62,19 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         }
     }
 
+    private fun didClickToPickSlot(){
+        btn_continue.setOnClickListener {
+            val i = Intent(this, InvoiceActivity::class.java)
+            startActivity(i)
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     private fun pickHour() {
-//        var hourParking = 1
         var hourParking = tv_time.text.toString().toInt()
-        var slotMoney = 30000
+        val slotMoney = 30000
         var total = slotMoney
-        tv_payment.text = "${slotMoney} đồng/${hourParking} giờ"
+        tv_payment.text = "$slotMoney đồng/${hourParking} giờ"
         imgBtn_arrowUp_add.setOnClickListener {
             if (hourParking >= 48) {
                 Toast.makeText(this, "Nhiều nhất là 48", Toast.LENGTH_SHORT)
@@ -77,8 +84,8 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
                 total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
-            tv_time.text = "${hourParking}"
-            tv_payment.text = "${total} đồng/${hourParking} giờ"
+            tv_time.text = "$hourParking"
+            tv_payment.text = "$total đồng/${hourParking} giờ"
         }
 
         imgBtn_muiltiArrowUp_add.setOnClickListener {
@@ -91,8 +98,8 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
                 total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
-            tv_time.text = "${hourParking}"
-            tv_payment.text = "${total} đồng/${hourParking} giờ"
+            tv_time.text = "$hourParking"
+            tv_payment.text = "$total đồng/${hourParking} giờ"
         }
 
         imgBtn_arrowDownBack_minus.setOnClickListener {
@@ -104,8 +111,8 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
                 total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
-            tv_time.text = "${hourParking}"
-            tv_payment.text = "${total} đồng/${hourParking} giờ"
+            tv_time.text = "$hourParking"
+            tv_payment.text = "$total đồng/${hourParking} giờ"
         }
 
         imgBtn_muiltiArrowUp_minus.setOnClickListener {
@@ -118,8 +125,8 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
                 total = slotMoney * hourParking
                 //Toast.makeText(this, "${hourParking}", Toast.LENGTH_SHORT).show()
             }
-            tv_time.text = "${hourParking}"
-            tv_payment.text = "${total} đồng/${hourParking} giờ"
+            tv_time.text = "$hourParking"
+            tv_payment.text = "$total đồng/${hourParking} giờ"
         }
     }
 
@@ -127,11 +134,6 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         myDay = dayOfMonth
         myYear = year
         myMonth = month + 1
-////        val calendar: Calendar = Calendar.getInstance()
-////        hour = calendar.get(Calendar.HOUR)
-////        minute = calendar.get(Calendar.MINUTE)
-//        val timePickerDialog = TimePickerDialog(this, this, hour, minute, DateFormat.is24HourFormat(this))
-//        timePickerDialog.show()
         edt_day.setText("$myDay" + "/" + "$myMonth" + "/" + "$myYear")
     }
 
@@ -154,15 +156,12 @@ class register_parkinglot : AppCompatActivity(), DatePickerDialog.OnDateSetListe
         val simpleDateFormat = SimpleDateFormat("hh:mm")
         return simpleDateFormat.format(Calendar.getInstance().time)
     }
-    fun compareTwoTimes(fromTime: String,currentTime : String): Boolean {
+
+    private fun compareTwoTimes(fromTime: String, currentTime : String): Boolean {
         val sdf = SimpleDateFormat("hh:mm")
         val time1 = sdf.parse(fromTime)
         val time2 = sdf.parse(currentTime)
-        if(!time2!!.before(time1)) {
-            return true
-        } else {
-            return false
-        }
+        return !time2!!.before(time1)
     }
 
 }

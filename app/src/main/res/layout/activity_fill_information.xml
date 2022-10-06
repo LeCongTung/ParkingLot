@@ -15,13 +15,6 @@
         android:paddingHorizontal="10dp"
         android:paddingVertical="15dp">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="5dp"
-            android:src="@drawable/ic_passer_header_back" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +22,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="NHẬP THÔNG TIN ĐĂNG KÝ"
             android:textColor="@color/mainColor"
-            android:textSize="19sp" />
+            android:textSize="19sp"/>
     </RelativeLayout>
 
     <ImageView
@@ -37,9 +30,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/layout_body"
+        android:layout_below="@+id/layout_top"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_img_information"
-        android:layout_below="@+id/layout_top"/>
+        android:src="@drawable/ic_img_information"/>
 
     <ScrollView
         android:id="@+id/layout_body"
@@ -143,7 +136,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/bg_passer_body_spinner"
-                android:paddingStart="40dp" />
+                android:paddingStart="40dp"
+                android:spinnerMode="dialog"/>
 
             <Button
                 android:id="@+id/btn_continue"

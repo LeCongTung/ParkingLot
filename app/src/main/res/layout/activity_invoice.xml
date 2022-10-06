@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.bill.invoiceActivity">
+    tools:context=".feature.invoice.InvoiceActivity">
+
     <RelativeLayout
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
@@ -14,13 +15,6 @@
         android:paddingHorizontal="10dp"
         android:paddingVertical="15dp">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:padding="5dp"
-            android:src="@drawable/ic_passer_header_back" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +23,16 @@
             android:text="HÓA ĐƠN"
             android:textColor="@color/mainColor"
             android:textSize="19sp" />
+
+        <ImageButton
+            android:id="@+id/screenShotButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:src="@drawable/ic_camera"
+            app:tint="@color/supportBlue" />
     </RelativeLayout>
 
     <LinearLayout
@@ -229,12 +233,23 @@
         </LinearLayout>
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/qrCodeImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_backHome"
+        android:layout_below="@id/layout_information"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp" />
+
     <Button
         android:id="@+id/btn_backHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bg_passer_body_btn"
         android:fontFamily="@font/roboto_bold"
         android:text="Trở về trang chủ"

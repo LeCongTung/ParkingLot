@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.letung.parkinglot">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,8 +17,20 @@
         android:theme="@style/DefaultTheme"
         tools:targetApi="31">
         <activity
-            android:name=".feature.bill.invoiceActivity"
-            android:exported="true" >
+            android:name=".feature.detail.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.invoice.InvoiceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".feature.parking.ParkingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".feature.customer.passer.register_parkingLot.register_parkinglot"
+            android:exported="true" />
+        <activity
+            android:name=".feature.customer.passer.fill_information.fillInformation"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,46 +38,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.parking.ParkingActivity"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".feature.customer.passer.register_parkingLot.register_parkinglot"
-            android:exported="true">
-
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
-<!--                 -->
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".feature.customer.passer.fill_information.fillInformation"
-            android:exported="true">
-
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
-
-
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
-        </activity>
-        <activity
             android:name=".feature.main.MainActivity"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
