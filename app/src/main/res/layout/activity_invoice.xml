@@ -240,7 +240,10 @@
         android:layout_above="@id/btn_backHome"
         android:layout_below="@id/layout_information"
         android:layout_centerHorizontal="true"
-        android:layout_margin="15dp" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:id="@+id/btn_backHome"

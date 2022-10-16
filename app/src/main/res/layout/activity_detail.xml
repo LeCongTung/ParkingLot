@@ -282,9 +282,12 @@
         android:id="@+id/comfirmButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xác nhận"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/bg_passer_body_btn"
-        android:textColor="@color/white"/>
+        android:text="Xác nhận"
+        android:textColor="@color/white" />
 </RelativeLayout>
