@@ -69,8 +69,8 @@ class SignInActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference("Account")
         database.child(userAccount).get().addOnSuccessListener {
             if(it.exists()){
-                tv_checkPassword.text = it.child("userPassword").value.toString()
-                if(tv_checkPassword.text.toString().trim() == edt_password.text.toString().trim()){
+                //tv_checkPassword.text = it.child("userPassword").value.toString()
+                if(it.child("userPassword").value.toString() == edt_password.text.toString().trim()){
                     Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, MainActivity::class.java))
                 }else
