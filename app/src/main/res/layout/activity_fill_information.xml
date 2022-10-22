@@ -46,13 +46,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_passer_body"
             android:elevation="40dp"
             android:orientation="vertical"
             android:paddingHorizontal="30dp"
-            android:paddingVertical="20dp"
-            android:layout_marginVertical="10dp">
+            android:paddingVertical="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/bg_passer_body_spinner"
                 android:paddingStart="40dp"
-                android:spinnerMode="dialog"/>
+                android:spinnerMode="dialog" />
 
             <Button
                 android:id="@+id/btn_continue"

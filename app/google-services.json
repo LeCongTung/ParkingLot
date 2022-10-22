@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "949212257754-t483tftbbngvjt6j9rltlqg09lfb6jue.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.letung.parkinglot",
+            "certificate_hash": "6a2fd27434278d472de15c865ce5edf006cbe666"
+          }
+        },
+        {
           "client_id": "949212257754-39rcrm7pbfvlibflv3tuekjlk157h2oq.apps.googleusercontent.com",
           "client_type": 3
         }
