@@ -17,6 +17,7 @@
 
         <ImageButton
             android:id="@+id/backButton"
+            app:tint="@color/supportBlue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -29,262 +30,275 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/roboto_bold"
             android:text="CHI TIẾT HOÁ ĐƠN"
-            android:textColor="@color/mainColor"
+            android:textColor="@color/supportBlue"
             android:textSize="15sp" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/content"
+    <ScrollView
+        android:id="@+id/contentScroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@id/priceTextView"
-        android:layout_below="@id/appBar"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:layout_below="@id/appBar">
 
         <LinearLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            >
+
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Họ tên người gửi: "
+                    android:textColor="@color/supportBlue" />
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/testView"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số điện thoại: "
+                    android:textColor="@color/supportBlue" />
+
+                <TextView
+                    android:id="@+id/phoneNumberTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/testView"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CMND/CCCD: "
+                    android:textColor="@color/supportBlue" />
+
+                <TextView
+                    android:id="@+id/identityTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/testView"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vị Trí: "
+                    android:textColor="@color/supportBlue" />
+
+                <TextView
+                    android:id="@+id/positionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/testView"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biển số xe: "
+                    android:textColor="@color/supportBlue" />
+
+                <TextView
+                    android:id="@+id/identityCarTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/testView"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loại xe: "
+                    android:textColor="@color/supportBlue" />
+
+                <TextView
+                    android:id="@+id/typeTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/testView"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giờ bắt đầu: "
+                    android:textColor="@color/supportBlue" />
+
+                <TextView
+                    android:id="@+id/startTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/testView"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Họ tên người gửi: "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/nameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/testView"
-                android:textColor="@color/supportBlue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Số điện thoại:"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/phoneNumberTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/testView"
-                android:textColor="@color/supportBlue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="CMND/CCCD:       "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/identityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/testView"
-                android:textColor="@color/supportBlue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Vị Trí:                     "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/positionTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/testView"
-                android:textColor="@color/supportBlue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Biển số xe :           "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/identityCarTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/testView"
-                android:textColor="@color/supportBlue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Loại xe :                 "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/typeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/testView"
-                android:textColor="@color/supportBlue" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Giờ bắt đầu :         "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/startTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/testView"
-                android:textColor="@color/supportBlue" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Số giờ đặt"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:gravity="center">
-
-            <ImageButton
-                android:id="@+id/multipleMinusButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:background="@drawable/bg_passer_body_btn"
-                android:padding="5dp"
-                android:rotation="180"
-                android:src="@drawable/ic_register_body_multiarrow"
-                app:tint="@color/white" />
-
-            <ImageButton
-                android:id="@+id/minusButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:background="@drawable/bg_passer_body_btn"
-                android:padding="5dp"
-                android:src="@drawable/ic_passer_arrowback" />
-
-            <TextView
-                android:id="@+id/hourTextView"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="1"
+                android:layout_margin="10dp"
+                android:text="Số giờ đặt"
                 android:textAlignment="center"
-                android:textColor="@color/mainColor"
-                android:textSize="25sp" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
-            <ImageButton
-                android:id="@+id/plusButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:background="@drawable/bg_passer_body_btn"
-                android:padding="5dp"
-                android:rotation="180"
-                android:src="@drawable/ic_passer_arrowback" />
+                android:layout_marginVertical="10dp"
+                android:gravity="center">
 
-            <ImageButton
-                android:id="@+id/multiplePlusButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:background="@drawable/bg_passer_body_btn"
-                android:padding="5dp"
-                android:src="@drawable/ic_register_body_multiarrow"
-                app:tint="@color/white" />
+                <ImageButton
+                    android:id="@+id/multipleMinusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/bg_passer_body_btn"
+                    android:padding="5dp"
+                    android:rotation="180"
+                    android:src="@drawable/ic_register_body_multiarrow"
+                    app:tint="@color/white" />
+
+                <ImageButton
+                    android:id="@+id/minusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/bg_passer_body_btn"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_passer_arrowback" />
+
+                <TextView
+                    android:id="@+id/hourTextView"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="@color/mainColor"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/plusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/bg_passer_body_btn"
+                    android:padding="5dp"
+                    android:rotation="180"
+                    android:src="@drawable/ic_passer_arrowback" />
+
+                <ImageButton
+                    android:id="@+id/multiplePlusButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/bg_passer_body_btn"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_register_body_multiarrow"
+                    app:tint="@color/white" />
+            </LinearLayout>
+
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/priceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/comfirmButton"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="bottom"
         android:text="Giá tiền: "
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
         android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/comfirmButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xác nhận"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:background="@drawable/bg_passer_body_btn"
-        android:textColor="@color/white"/>
+        android:text="Xác nhận"
+        android:textColor="@color/white" />
 </RelativeLayout>
