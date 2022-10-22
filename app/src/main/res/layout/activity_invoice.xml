@@ -57,10 +57,7 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -182,11 +179,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Giờ đăng ký:"
+                android:text="Vị trí:"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tv_registerTime"
+                android:id="@+id/positionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
@@ -232,6 +229,7 @@
                 android:textSize="18.5sp" />
         </LinearLayout>
     </LinearLayout>
+
 
     <ImageView
         android:id="@+id/qrCodeImage"

@@ -69,7 +69,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpDatabase() {
         guestDatabase = FirebaseDatabase.getInstance().getReference("Guest")
-        slotDatabase = FirebaseDatabase.getInstance().getReference("Slot/A/1")
+        slotDatabase = FirebaseDatabase.getInstance().getReference("Slot/1/A")
     }
 
     private fun updateStatus(){

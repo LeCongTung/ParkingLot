@@ -38,24 +38,20 @@ class fillInformation : AppCompatActivity() {
     private fun checkCondition(): Boolean{
         if (edt_name.text.toString().isEmpty()){
             Toast.makeText(this, "Yêu cầu nhập đầy đủ tên", Toast.LENGTH_SHORT).show()
-            edt_name.setText("")
             return false
         }else
             if (edt_phone.text.toString().length != 10){
                 Toast.makeText(this, "Yêu cầu nhập đúng số điện thoại", Toast.LENGTH_SHORT).show()
-                edt_phone.setText("")
                 return false
             }else
                 if (edt_identityCar.text.toString().length != 8){
                     Toast.makeText(this, "Yêu cầu nhập đầy đủ biển số xe", Toast.LENGTH_SHORT).show()
-                    edt_identityCar.setText("")
                     return false
                 }else
                     return if (edt_identity.text.toString().length == 9 || edt_identity.text.toString().length == 12){
                         true
                     }else{
                         Toast.makeText(this, "Yêu cầu nhập đúng số CCCD/CMND", Toast.LENGTH_SHORT).show()
-                        edt_identity.setText("")
                         false
                     }
     }

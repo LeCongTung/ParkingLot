@@ -46,12 +46,13 @@
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/drawable/bg_test.xml" value="0.2095" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_identitycar.xml" value="0.2335" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_detail.xml" value="0.3875" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_fill_information.xml" value="0.20208333333333334" />
+        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_fill_information.xml" value="0.5" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_invoice.xml" value="0.3875" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_main.xml" value="0.20208333333333334" />
-        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_parking.xml" value="0.1" />
+        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_parking.xml" value="0.33" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/activity_register_parkinglot.xml" value="0.3875" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/dialog_floor_area.xml" value="0.3875" />
+        <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/item_cart.xml" value="0.20208333333333334" />
         <entry key="..\:/Flutter/ParkingLot/app/src/main/res/layout/item_slot.xml" value="0.38645833333333335" />
       </map>
     </option>

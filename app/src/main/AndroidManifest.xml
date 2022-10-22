@@ -64,13 +64,20 @@
             android:exported="true" />
         <activity
             android:name=".feature.parking.ParkingActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".feature.customer.passer.register_parkingLot.register_parkinglot"
             android:exported="true" />
         <activity
             android:name=".feature.customer.passer.fill_information.fillInformation"
             android:exported="true" />
+
         <activity
             android:name=".feature.main.MainActivity"
             android:exported="true" />
