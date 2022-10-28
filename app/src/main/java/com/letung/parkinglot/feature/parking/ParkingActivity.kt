@@ -35,22 +35,27 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
 
     private lateinit var slotDatabase: DatabaseReference
     private var slotArrayList: ArrayList<Slot> = arrayListOf()
+    var floorSelected = 1
+    var areaSelected = "A"
+    val floorList = arrayListOf(1, 2, 3)
+    val areaList = arrayListOf("A", "B", "C")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parking)
 
         setUpController()
-        setUpDatabase()
+        setUpDatabase(floorSelected, areaSelected)
         fetchDataSlot()
+        eventListener()
     }
 
     private fun setUpController(){
         currentTimeTextView.text = "Truy cập lúc: ${getCurrentDate()}"
     }
 
-    private fun setUpDatabase() {
-        slotDatabase = FirebaseDatabase.getInstance().getReference("Slot/A/1")
+    private fun setUpDatabase(floor: Int, area: String) {
+        slotDatabase = FirebaseDatabase.getInstance().getReference("Slot/${floor}/${area}")
     }
 
     private fun getCurrentDate(): String{
@@ -82,6 +87,32 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
         })
     }
 
+    private fun eventListener(){
+        val floorArray = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, floorList)
+        floorSpinner.adapter = floorArray
+        floorSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                floorSelected = floorList[p2]
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
+
+        val areaArray = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, areaList)
+        areaSpinner.adapter = areaArray
+        areaSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                areaSelected = areaList[p2]
+
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
+
+        searchButton.setOnClickListener {
+            setUpDatabase(floorSelected, areaSelected)
+            fetchDataSlot()
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     private fun showDialog(item: Slot) {
         val dialog = Dialog(this)
@@ -92,7 +123,7 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
 
         dialog.positionTextView.text = "Vị trí: ${item.position}"
         dialog.statusTextView.text = "Tình trạng: ${item.status}"
-        var canPark: Boolean
+        val canPark: Boolean
         when (item.status){
             "parking" -> {
                 dialog.statusTextView.setTextColor(ContextCompat.getColor(this, R.color.supportRed))

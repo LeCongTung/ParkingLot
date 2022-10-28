@@ -2,6 +2,7 @@ package com.letung.parkinglot.feature.invoice
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -22,6 +23,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import com.letung.parkinglot.R
 import com.letung.parkinglot.extension.App
+import com.letung.parkinglot.feature.customer.passer.fill_information.fillInformation
 import kotlinx.android.synthetic.main.activity_invoice.*
 import java.io.File
 import java.io.FileOutputStream
@@ -72,6 +74,7 @@ class InvoiceActivity : AppCompatActivity() {
                 tv_id.text = it.child("identity").value.toString().trim()
                 tv_licensePlate.text = it.child("identityCar").value.toString().trim()
                 tv_regiserDay.text = it.child("startTime").value.toString().trim()
+                positionTextView.text = it.child("position").value.toString().trim()
                 tv_hourParking.text = it.child("hoursParking").value.toString().trim()
                 tv_totalBill.text = it.child("totalPrice").value.toString().trim()
             }
@@ -86,6 +89,12 @@ class InvoiceActivity : AppCompatActivity() {
             if (bitmap != null) {
                 saveMediaToStorage(bitmap)
             }
+        }
+
+        btn_backHome.setOnClickListener {
+            val intent = Intent(this, fillInformation::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -121,22 +130,8 @@ class InvoiceActivity : AppCompatActivity() {
         }
 
         fos?.use {
-            // Finally writing the bitmap to the output stream that we opened
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
             Toast.makeText(this , "Đã lưu vào thư viện" , Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    companion object Screenshot {
-        private fun takeScreenshot(view: View): Bitmap {
-            view.isDrawingCacheEnabled = true
-            view.buildDrawingCache(true)
-            val b = Bitmap.createBitmap(view.drawingCache)
-            view.isDrawingCacheEnabled = false
-            return b
-        }
-        fun takeScreenshotOfRootView(v: View): Bitmap {
-            return takeScreenshot(v.rootView)
         }
     }
 }
