@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="16dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên xe:  "
+                android:textColor="@color/mainColor"
+                android:textSize="25sp"
+                android:fontFamily="@font/product_sans_bold"/>
+            <TextView
+                android:id="@+id/tv_userCarName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/testView"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:fontFamily="@font/product_sans_regular"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Biển số xe:  "
+                android:textColor="@color/mainColor"
+                android:textSize="25sp"
+                android:fontFamily="@font/product_sans_bold"/>
+            <TextView
+                android:id="@+id/tv_userCarNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/testView"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:fontFamily="@font/product_sans_regular"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loại xe:  "
+                android:textColor="@color/mainColor"
+                android:textSize="25sp"
+                android:fontFamily="@font/product_sans_bold"/>
+            <TextView
+                android:id="@+id/tv_userCarType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/testView"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:fontFamily="@font/product_sans_regular"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

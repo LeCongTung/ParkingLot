@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".feature.profile.ProfileActivity">
 
     <RelativeLayout
@@ -16,6 +17,7 @@
         android:paddingVertical="15dp">
 
         <ImageButton
+            android:id="@+id/imgbtn_backToMainActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -38,42 +40,82 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:layout_marginVertical="10dp">
+        android:layout_marginVertical="10dp"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:background="@drawable/bg_avatar"
-            android:src="@drawable/ic_passer_body_name_focused"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_passer_body_name_focused" />
+
         <TextView
+            android:id="@+id/tv_accountPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
             android:text="@string/testView"
             android:textAlignment="center"
-            android:textSize="23sp"
-            android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/black"/>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/avatar"
-        android:layout_centerInParent="true">
+            android:textColor="@color/black"
+            android:textSize="23sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_accountMoney1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Số dư hiện tại: "
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/tv_accountMoney2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/testView"
+                android:textAlignment="center"
+                android:textColor="@color/supportRed"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/tv_accountMoney3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="đ"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="23sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/layout_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/avatar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
             android:background="@drawable/bg_passer_body"
-            android:elevation="40dp"
+            android:elevation="5dp"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="10dp">
+            >
 
             <EditText
                 android:id="@+id/edt_editProfile"
@@ -82,13 +124,13 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_item_profile"
                 android:drawableStart="@drawable/ic_edit_profile"
+                android:drawableEnd="@drawable/ic_arrowmovetoactivity"
                 android:drawablePadding="10dp"
                 android:focusable="false"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:text="Cập nhật thông tin"
-                android:textColor="@color/black"
-                android:drawableEnd="@drawable/ic_arrowmovetoactivity"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/edt_changePassword"
@@ -97,13 +139,43 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_item_profile"
                 android:drawableStart="@drawable/ic_password_profile"
+                android:drawableEnd="@drawable/ic_arrowmovetoactivity"
                 android:drawablePadding="10dp"
                 android:focusable="false"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:text="Đổi mật khẩu"
-                android:textColor="@color/black"
-                android:drawableEnd="@drawable/ic_arrowmovetoactivity"/>
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_addCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/bg_item_profile"
+                android:drawableStart="@drawable/ic_car"
+                android:drawableEnd="@drawable/ic_arrowmovetoactivity"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="Thêm xe"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_listCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/bg_item_profile"
+                android:drawableStart="@drawable/ic_listcar"
+                android:drawableEnd="@drawable/ic_arrowmovetoactivity"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="Danh sách xe"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/edt_moneyIntoAccount"
@@ -112,13 +184,13 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_item_profile"
                 android:drawableStart="@drawable/ic_history"
+                android:drawableEnd="@drawable/ic_arrowmovetoactivity"
                 android:drawablePadding="10dp"
                 android:focusable="false"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:text="Lịch sử đặt ô đỗ"
-                android:textColor="@color/black"
-                android:drawableEnd="@drawable/ic_arrowmovetoactivity"/>
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/edt_privateHistory"
@@ -127,13 +199,13 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_item_profile"
                 android:drawableStart="@drawable/ic_payment"
+                android:drawableEnd="@drawable/ic_arrowmovetoactivity"
                 android:drawablePadding="10dp"
                 android:focusable="false"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:text="Nạp tiền vào ví điện tử"
-                android:textColor="@color/black"
-                android:drawableEnd="@drawable/ic_arrowmovetoactivity"/>
+                android:text="Nạp tiền vào tài khoản"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/edt_signOut"
@@ -142,13 +214,13 @@
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_item_profile"
                 android:drawableStart="@drawable/ic_logout"
+                android:drawableEnd="@drawable/ic_arrowmovetoactivity_logout"
                 android:drawablePadding="10dp"
                 android:focusable="false"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:text="Đăng xuất"
-                android:textColor="@color/supportRed"
-                android:drawableEnd="@drawable/ic_arrowmovetoactivity_logout"/>
+                android:textColor="@color/supportRed" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

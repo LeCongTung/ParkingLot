@@ -10,9 +10,17 @@ import android.widget.Toast
 import androidx.room.Database
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.letung.parkinglot.extension.Account
+import com.letung.parkinglot.extension.App
+import com.letung.parkinglot.feature.customer.passer.fill_information.fillInformation
 import com.letung.parkinglot.feature.main.MainActivity
 import com.letung.parkinglot.feature.signUp.SignUpActivity
+import kotlinx.android.synthetic.main.activity_fill_information.*
+import kotlinx.android.synthetic.main.activity_fill_information.edt_name
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_sign_in.edt_password
+import kotlinx.android.synthetic.main.activity_sign_in.edt_phone
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -25,6 +33,7 @@ class SignInActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         eventMoveToSignUp()
         eventListener()
+        moveToPasserRegisterParkingLot()
     }
 
     private fun eventMoveToSignUp(){
@@ -69,10 +78,13 @@ class SignInActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference("Account")
         database.child(userAccount).get().addOnSuccessListener {
             if(it.exists()){
-                //tv_checkPassword.text = it.child("userPassword").value.toString()
+                //edt_password.text = it.child("userPassword").value.toString()
                 if(it.child("userPassword").value.toString() == edt_password.text.toString().trim()){
-                    Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
+                    Account.DATA_NAME = edt_phone.text.toString()
+                    Toast.makeText(this, "Đăng nhập thành công ", Toast.LENGTH_SHORT).show()
+                    //var Account.CODE_DATA_NAME :String = edt_phone.text.toString()
                     startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 }else
                     Toast.makeText(this, "Sai mật khẩu", Toast.LENGTH_SHORT).show()
             }else
@@ -83,4 +95,11 @@ class SignInActivity : AppCompatActivity() {
             Toast.makeText(this, "Tìm tài khoản thất bại", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun moveToPasserRegisterParkingLot(){
+        btn_passerRegisterParkingLot.setOnClickListener(){
+            startActivity(Intent(this, fillInformation::class.java))
+        }
+    }
+
 }

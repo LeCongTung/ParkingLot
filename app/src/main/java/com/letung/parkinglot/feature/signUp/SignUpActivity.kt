@@ -16,6 +16,7 @@ import com.google.firebase.auth.*
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.letung.parkinglot.feature.OTP_remake.OTP_RemakeActivity
+import com.letung.parkinglot.feature.customer.passer.fill_information.fillInformation
 import com.letung.parkinglot.feature.signIn.SignInActivity
 import com.letung.parkinglot.model.User
 import com.letung.parkinglot.model.UserAccount
@@ -36,6 +37,7 @@ class SignUpActivity : AppCompatActivity() {
         init()
         eventListener()
         moveToSignIn()
+        moveToPasserRegisterParkinglot()
     }
 
     private fun checkCondition(): Boolean {
@@ -131,10 +133,19 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun moveToSignIn(){
         moveToSignIn.setOnClickListener(){
-            startActivity(Intent(this, SignInActivity::class.java))
+            onBackPressed()
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
+    private fun moveToPasserRegisterParkinglot(){
+        btn_registerParkingLot.setOnClickListener(){
+            startActivity(Intent(this, fillInformation::class.java))
+        }
+    }
 
     private fun init() {
         //mProgressBar = findViewById(R.id.phoneProgressBar)

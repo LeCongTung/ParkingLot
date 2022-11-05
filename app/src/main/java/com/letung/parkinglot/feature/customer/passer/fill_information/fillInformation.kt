@@ -33,6 +33,7 @@ class fillInformation : AppCompatActivity() {
         }
 
         eventListener()
+        backToActovity()
     }
 
     private fun checkCondition(): Boolean{
@@ -80,5 +81,16 @@ class fillInformation : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun backToActovity(){
+        imgbtn_backToActivity.setOnClickListener(){
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }
