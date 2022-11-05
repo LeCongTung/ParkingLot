@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.letung.parkinglot.R
 import com.letung.parkinglot.extension.Account
-import com.letung.parkinglot.model.CarAdapter
+import com.letung.parkinglot.feature.userListCar.adapter.CarAdapter
 import com.letung.parkinglot.model.UserCar
 import kotlinx.android.synthetic.main.activity_user_list_car.*
 

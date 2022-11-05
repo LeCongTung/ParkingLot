@@ -22,17 +22,13 @@ class UpdateProfileActivity : AppCompatActivity() {
     }
 
     private fun updateProfile(){
-        val intent = intent
-        edt_phone2.setText(intent.getStringExtra("data"))
-        //edt_phone2.setText("0935196475")
-
+        val phoneNumber = intent.getStringExtra("data").toString()
+        edt_phone2.setText(phoneNumber)
+        readData(phoneNumber)
     }
     private fun setEventForPhone(){
-        val userPhone : String = edt_phone2.text.toString()
-        readData(userPhone)
         edt_phone2.setOnClickListener(){
             Toast.makeText(this, "Không thể chỉnh sửa SĐT đã tạo", Toast.LENGTH_SHORT).show()
-
         }
     }
 
