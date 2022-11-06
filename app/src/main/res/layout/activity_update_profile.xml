@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.updateprofile.UpdateProfileActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_passer_header"
+        android:elevation="20dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="15dp">
+
+        <ImageButton
+            android:id="@+id/imgbtn_backToMainActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:src="@drawable/ic_passer_header_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Chỉnh sửa hồ sơ cá nhân"
+            android:textAlignment="center"
+            android:textColor="@color/mainColor"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_updateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout_updateProfile"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_update_profile" />
+
+    <LinearLayout
+        android:id="@+id/layout_updateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_passer_body"
+        android:elevation="40dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="20dp"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextNumber2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/bg_passer_body_textbox"
+                android:focusable="false"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="+84"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/edt_phone2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/editTextNumber2"
+                android:background="@drawable/bg_passer_body_textbox"
+                android:drawableStart="@drawable/custom_ic_passer_body_phone"
+                android:drawablePadding="10dp"
+                android:focusable="false"
+                android:hint="Số điện thoại"
+                android:inputType="number"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:drawableStart="@drawable/custom_ic_passer_body_name"
+            android:drawablePadding="10dp"
+            android:hint="Tên người dùng"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/black" />
+
+
+        <EditText
+            android:id="@+id/edt_identity2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/bg_passer_body_textbox"
+            android:drawableStart="@drawable/custom_ic_passer_body_identity"
+            android:drawablePadding="10dp"
+            android:hint="CCCD/ CMND"
+            android:inputType="number"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/black" />
+
+
+        <Button
+            android:id="@+id/btn_continueUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/bg_passer_body_btn"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Tiếp tục"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+
+    </LinearLayout>
+</RelativeLayout>
