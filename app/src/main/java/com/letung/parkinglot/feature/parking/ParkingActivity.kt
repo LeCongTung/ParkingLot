@@ -71,7 +71,7 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
                 if (snapshot.exists()) {
                     slotArrayList.clear()
                     for (productSnapshot in snapshot.children) {
-                            val item = productSnapshot.getValue(Slot::class.java)
+                        val item = productSnapshot.getValue(Slot::class.java)
                         slotArrayList.add(item!!)
                     }
                     slotArrayList.sortByDescending { it.position }

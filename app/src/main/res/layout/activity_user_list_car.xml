@@ -35,24 +35,22 @@
     </RelativeLayout>
 
 
-    <EditText
-        android:id="@+id/edt_searchView"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
+
         android:layout_marginHorizontal="40dp"
         android:layout_marginVertical="10dp"
-        android:background="@drawable/bg_passer_body_textbox"
-        android:drawableStart="@drawable/custom_ic_search"
-        android:drawablePadding="10dp"
-        android:hint="Tìm kiếm"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColor="@color/black" />
+        android:background="@drawable/bg_searchview"
+        app:iconifiedByDefault="false"
+        app:queryHint="Tìm kiếm xe..." />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/edt_searchView"
-        tools:listitem="@layout/user_carlist"/>
+        android:layout_below="@+id/searchView"
+        tools:listitem="@layout/user_carlist" />
 </RelativeLayout>

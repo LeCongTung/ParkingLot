@@ -17,4 +17,18 @@
         android:textColor="@color/white"
         android:textSize="20dp" />
 
+    <Button
+        android:layout_below="@+id/btn_moveToProfile"
+        android:id="@+id/btn_moveToParking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/bg_passer_body_btn"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Bãi đậu"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+
+
 </RelativeLayout>

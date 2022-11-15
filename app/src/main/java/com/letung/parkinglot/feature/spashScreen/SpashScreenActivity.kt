@@ -11,6 +11,7 @@ import com.letung.parkinglot.R
 import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.feature.main.MainActivity
 import com.letung.parkinglot.feature.signIn.SignInActivity
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -55,9 +56,8 @@ class SpashScreenActivity : AppCompatActivity() {
             if (it.exists()) {
                 if (it.child("userPassword").value.toString() == defaultValuePass) {
                     Log.e("tungdeptrai", "maiyeu22")
+                    Account.DATA_NAME = defaultValuePhone
                     moveToActivity()
-
-
                 }else{
                     moveToSignIn()
                 }
