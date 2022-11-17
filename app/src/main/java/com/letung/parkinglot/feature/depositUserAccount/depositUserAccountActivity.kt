@@ -67,7 +67,7 @@ class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickL
     private fun showBottomSheet() {
         dialog = BottomSheetDialog(this, R.style.BottomSheetDialogTheme)
         val view = layoutInflater.inflate(R.layout.user_bottom_sheet, null)
-        dialog.setCancelable(false)
+        dialog.setCancelable(true)
         dialog.setContentView(view)
         userRecyclerview = dialog.findViewById(R.id.bottom_bankList)!!
         userRecyclerview.layoutManager = LinearLayoutManager(this)

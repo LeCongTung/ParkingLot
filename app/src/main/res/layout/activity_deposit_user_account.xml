@@ -70,13 +70,14 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/img_bank"
                 android:background="@drawable/bg_searchview"
+                android:drawableEnd="@drawable/ic_arrowdown"
                 android:drawablePadding="10dp"
+                android:gravity="center_vertical"
                 android:hint="Tên ngân hàng"
                 android:padding="10dp"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:drawableEnd="@drawable/ic_arrowdown"/>
+                android:textSize="20sp" />
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
