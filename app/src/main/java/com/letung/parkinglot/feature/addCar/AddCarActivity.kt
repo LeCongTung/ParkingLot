@@ -24,7 +24,7 @@ class AddCarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_car)
-
+        database = FirebaseDatabase.getInstance().getReference("Account/${Account.DATA_NAME}/userCar")
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, carTypeList)
         spinner_carType.adapter = arrayAdapter
         spinner_carType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -54,15 +54,13 @@ class AddCarActivity : AppCompatActivity() {
         }
     }
     private fun setUpDataBase(){
-        database = FirebaseDatabase.getInstance().getReference("Account/${Account.DATA_NAME}/userCar")
         val userCarName = edt_nameCar.text.toString()
         val userCarNumber = edt_identityCar.text.toString()
         val userCar = UserCar(userCarName, userCarNumber, typeChoice)
         database.child(userCarNumber).setValue(userCar).addOnSuccessListener {
-            edt_nameCar.text?.clear()
-            edt_identityCar.text?.clear()
             Toast.makeText(this, "Đăng kí thành công", Toast.LENGTH_SHORT).show()
             Log.d("Khoa", "Chay")
+            finish()
         }.addOnFailureListener{
             Log.d("Khoa", "loi")
         }

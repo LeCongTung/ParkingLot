@@ -15,6 +15,7 @@ class UpdateProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
+        database = FirebaseDatabase.getInstance().getReference("Account")
         updateProfile()
         setEventForPhone()
         eventListener()
@@ -33,7 +34,6 @@ class UpdateProfileActivity : AppCompatActivity() {
     }
 
     private fun readData(userPhone: String) {
-        database = FirebaseDatabase.getInstance().getReference("Account")
         database.child(userPhone).get().addOnSuccessListener {
             if(it.exists()){
                 val userName = it.child("userName").value.toString()
@@ -81,13 +81,13 @@ class UpdateProfileActivity : AppCompatActivity() {
         }
     }
     private fun updateData(userPhone : String, userName : String, userID : String){
-        database = FirebaseDatabase.getInstance().getReference("Account")
         val user = mapOf<String, String>(
             "userName" to userName,
             "userIdentity" to userID
         )
         database.child(userPhone).updateChildren(user).addOnSuccessListener {
             Toast.makeText(this, "Chỉnh sửa thông tin thành công", Toast.LENGTH_SHORT).show()
+            finish()
         }.addOnFailureListener{
             Toast.makeText(this, "Chỉnh sửa thât bại", Toast.LENGTH_SHORT).show()
         }

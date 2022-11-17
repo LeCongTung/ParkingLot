@@ -15,6 +15,7 @@ class ChangePasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_password)
+        database = FirebaseDatabase.getInstance().getReference("Account")
         accountPhone()
         eventListener()
         backToProfile()
@@ -62,7 +63,6 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
     }
     private fun resetDatabase(userPhone: String, userCurrentPassword : String,userPassword: String) {
-        database = FirebaseDatabase.getInstance().getReference("Account")
         database.child(userPhone).get().addOnSuccessListener {
             if (it.exists()) {
                 if (it.child("userPassword").value.toString() == userCurrentPassword) {
@@ -76,15 +76,12 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
     }
     private fun updateData(userPhone: String, userPassword: String) {
-        database = FirebaseDatabase.getInstance().getReference("Account")
         val user = mapOf<String, String>(
             "userPassword" to userPassword
         )
         database.child(userPhone).updateChildren(user).addOnSuccessListener {
             Toast.makeText(this, "Cập nhật mật khẩu thành công", Toast.LENGTH_SHORT).show()
-            edt_currentPassword.text?.clear()
-            edt_newPassword.text?.clear()
-            edt_confirmNewPassword.text?.clear()
+            finish()
         }.addOnFailureListener {
             Toast.makeText(this, "Cập nhật mật khẩu thất bại", Toast.LENGTH_SHORT).show()
         }

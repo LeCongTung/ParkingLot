@@ -1,5 +1,6 @@
 package com.letung.parkinglot.feature.signIn
 
+import android.app.Dialog
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,8 @@ import com.letung.parkinglot.R
 import android.widget.Button
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.room.Database
@@ -23,6 +26,10 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_in.edt_password
 import kotlinx.android.synthetic.main.activity_sign_in.edt_phone
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -87,10 +94,9 @@ class SignInActivity : AppCompatActivity() {
                 if(it.child("userPassword").value.toString() == pass){
                     Account.DATA_NAME = edt_phone.text.toString()
                     saveKey(userAccount, pass)
-                    Toast.makeText(this, "Đăng nhập thành công ", Toast.LENGTH_SHORT).show()
                     //var Account.CODE_DATA_NAME :String = edt_phone.text.toString()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
+                    setLoadingDialog()
+                    setSplashScreen()
                 }else
                     Toast.makeText(this, "Sai mật khẩu", Toast.LENGTH_SHORT).show()
             }else
@@ -107,5 +113,24 @@ class SignInActivity : AppCompatActivity() {
         editor.putString(Account.CODE_DATA_PHONENUMBER,phone)
         editor.putString(Account.CODE_DATA_PASSWORD , pass)
         editor.commit()
+    }
+
+    private fun setLoadingDialog(){
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.dialog_loading)
+        if(dialog.window != null){
+            dialog!!.window!!.setBackgroundDrawable(ColorDrawable(0))
+        }
+        dialog.setCancelable(false)
+        dialog.show()
+    }
+
+    private fun setSplashScreen(){
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(1000)
+            startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+            Toast.makeText(this@SignInActivity, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
+            finish()
+        }
     }
 }
