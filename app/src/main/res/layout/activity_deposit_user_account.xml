@@ -51,20 +51,33 @@
             android:textSize="20sp"
             android:fontFamily="@font/roboto_bold"
             android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/edt_bank"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/bg_searchview"
-            android:drawableStart="@drawable/ic_bank"
-            android:drawablePadding="10dp"
-            android:hint="Tên ngân hàng"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:gravity="center_vertical"
-            android:drawableEnd="@drawable/ic_arrowdown"/>
+            android:layout_marginVertical="10dp">
+
+            <ImageView
+                android:id="@+id/img_bank"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_bank" />
+
+            <TextView
+                android:id="@+id/edt_bank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/img_bank"
+                android:background="@drawable/bg_searchview"
+                android:drawablePadding="10dp"
+                android:hint="Tên ngân hàng"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:drawableEnd="@drawable/ic_arrowdown"/>
+        </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

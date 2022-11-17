@@ -33,7 +33,7 @@
         android:layout_below="@+id/closeDialog"
         android:id="@+id/searchBank"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="10dp">
         <androidx.appcompat.widget.SearchView
@@ -51,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/searchView"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/user_banklist" />
     </LinearLayout>
 </RelativeLayout>

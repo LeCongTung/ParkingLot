@@ -1,55 +1,50 @@
 package com.letung.parkinglot.feature.depositUserAccount.adapter
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.letung.parkinglot.R
 import com.letung.parkinglot.model.UserBank
 import kotlinx.android.synthetic.main.user_banklist.view.*
-import java.net.URLEncoder
 
 class BankAdapter(val context: Context,
-    private val userList: ArrayList<UserBank>) : RecyclerView.Adapter<BankAdapter.MyViewHolder>() {
-
-    private lateinit var mListener : onItemClickListener
+    private val userList: ArrayList<UserBank>,
+    var listener : onItemClickListener) : RecyclerView.Adapter<BankAdapter.MyViewHolder>() {
 
     interface onItemClickListener{
-        fun onItemClick(position: Int)
+        fun onItemClick(name: String, img: String)
     }
 
-    fun setOnItemClickListener(listener : onItemClickListener){
-        mListener = listener
-    }
+//    fun setOnItemClickListener(listener : onItemClickListener){
+//        listener = listener
+//    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.user_banklist, parent, false), mListener)
+        return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.user_banklist, parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = userList[position]
-//        holder.itemView.img_bank.setImageURI(Uri.parse(currentItem.logo))
-        Glide.with(context).load(currentItem.bankLogoUrl).into(holder.itemView.img_bank);
+        Glide.with(context).load(currentItem.bankLogoUrl).into(holder.itemView.img_bank)
         holder.itemView.tv_bankName.text = currentItem.name
-//        holder.itemView.tv_bankName.setOnClickListener {
-//            Log.d("position", "$position")
-//        }
-
+        holder.itemView.item.setOnClickListener {
+            listener.onItemClick(currentItem.name!!, currentItem.bankLogoUrl!!)
+        }
     }
 
     override fun getItemCount(): Int {
         return userList.size
     }
 
-    class MyViewHolder(itemView : View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView){
-        init{
-            itemView.setOnClickListener(){
-                listener.onItemClick(adapterPosition)
-            }
-        }
+    class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+//        init{
+//            itemView.setOnClickListener(){
+//                listener.onItemClick(adapterPosition)
+//            }
+//        }
     }
 }
