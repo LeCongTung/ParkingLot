@@ -117,8 +117,7 @@ class SignUpActivity : AppCompatActivity() {
         val userPhone = phoneEditTextNumber.text.toString()
         val userIdentity = edt_identity2.text.toString()
         val userPassword = edt_password.text.toString()
-
-        val userAccount = UserAccount(userName, userPhone, userIdentity, userPassword)
+        val userAccount = UserAccount(userName, userPhone, userIdentity, userPassword, 0)
         database.child(userPhone).setValue(userAccount).addOnSuccessListener {
             Log.d("Khoa", "Chay")
 //            edt_name.text?.clear()

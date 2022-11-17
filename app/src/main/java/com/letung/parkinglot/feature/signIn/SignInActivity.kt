@@ -41,7 +41,6 @@ class SignInActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("Account")
-//fetchAccount()
         eventMoveToSignUp()
         eventListener()
     }
