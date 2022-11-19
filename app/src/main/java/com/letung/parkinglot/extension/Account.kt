@@ -12,5 +12,7 @@ class Account : Application() {
         var DATA_IDENTITY = ""
         val CODE_DATA_PASSWORD = "CODE_DATA_PASSWORD"
         var DATA_PASSWORD = ""
+        val CODE_DATA_MONEY = "CODE_DATA_MONEY"
+        var DATA_MONEY = ""
     }
 }

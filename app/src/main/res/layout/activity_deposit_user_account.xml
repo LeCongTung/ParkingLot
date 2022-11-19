@@ -47,6 +47,35 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Số dư hiện tại trong tài khoản"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_userMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/testView"
+                android:textColor="@color/supportRed"
+                android:textSize="25sp" />
+            <TextView
+                android:layout_toEndOf="@+id/tv_userMoney"
+                android:id="@+id/tv_VND"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" đ"
+                android:textSize="25sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Ngân hàng"
             android:textSize="20sp"
             android:fontFamily="@font/roboto_bold"
@@ -58,8 +87,8 @@
 
             <ImageView
                 android:id="@+id/img_bank"
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:padding="10dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_bank" />
@@ -100,12 +129,23 @@
             android:inputType="number"
             android:textColor="@color/black" />
         <TextView
+            android:id="@+id/tv_remindIDBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nhập sai số tài khoản"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/supportRed"
+            android:visibility="gone"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Số tiền cần nạp"
             android:textSize="20sp"
             android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
         <EditText
             android:id="@+id/edt_money"
             android:layout_width="match_parent"
@@ -119,6 +159,17 @@
             android:singleLine="true"
             android:inputType="number"
             android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/tv_remindDepositMoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/testView"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/supportRed"
+            android:visibility="gone"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="5dp"/>
 
         <Button
             android:id="@+id/btn_continueDepositMoney"

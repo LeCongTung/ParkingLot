@@ -5,6 +5,8 @@ import com.letung.parkinglot.extension.Account
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.letung.parkinglot.R
 import com.letung.parkinglot.feature.addCar.AddCarActivity
 import com.letung.parkinglot.feature.changepassword.ChangePasswordActivity
@@ -17,17 +19,33 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlin.system.exitProcess
 
 class ProfileActivity : AppCompatActivity() {
+    private lateinit var databaseMoney : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
+        databaseMoney = FirebaseDatabase.getInstance().getReference("Account")
         setNameForAccount()
+        setUserMoney(Account.DATA_NAME)
         moveToUpdateProfileActivity()
         moveToChangePasswordActivity()
         moveToAddCarActivity()
         moveToListCar()
         moveToSignInActivity()
         moveToDepositUserAccount()
+        backToMainActivity()
+    }
+
+    private fun setUserMoney(dataName: String) {
+        databaseMoney.child(dataName).get().addOnSuccessListener { 
+            if(it.exists()){
+                val userMoney = it.child("userMoney").value.toString()
+                tv_accountMoney2.text = userMoney
+            }else{
+                Toast.makeText(this, "Không tồn tại", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener(){
+            Toast.makeText(this, "Truy vấn thất bại", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setNameForAccount() {
@@ -47,8 +65,6 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun moveToChangePasswordActivity() {
         edt_changePassword.setOnClickListener() {
-            Toast.makeText(this, "Thành công", Toast.LENGTH_SHORT).show()
-            //truyền dữ liệu đi
             val intent = Intent(this, ChangePasswordActivity::class.java)
             intent.putExtra("data", tv_accountPhone.text.toString())
             startActivity(intent)
@@ -57,8 +73,6 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun moveToAddCarActivity() {
         edt_addCar.setOnClickListener() {
-            Toast.makeText(this, "Thành công", Toast.LENGTH_SHORT).show()
-            //truyền dữ liệu đi
             val intent = Intent(this, AddCarActivity::class.java)
             intent.putExtra("data", tv_accountPhone.text.toString())
             startActivity(intent)
@@ -67,8 +81,6 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun moveToListCar() {
         edt_listCar.setOnClickListener() {
-            Toast.makeText(this, "Thành công", Toast.LENGTH_SHORT).show()
-            //truyền dữ liệu đi
             startActivity(Intent(this, UserListCarActivity::class.java))
         }
 
@@ -76,9 +88,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun backToMainActivity() {
         imgbtn_backToMainActivity.setOnClickListener() {
-            Toast.makeText(this, "Thành công", Toast.LENGTH_SHORT).show()
-
-            //startActivity(Intent(this, MainActivity::class.java))
+            onBackPressed()
         }
     }
 
@@ -96,6 +106,11 @@ class ProfileActivity : AppCompatActivity() {
 //            exitProcess(-1)
             finishAffinity()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
 }

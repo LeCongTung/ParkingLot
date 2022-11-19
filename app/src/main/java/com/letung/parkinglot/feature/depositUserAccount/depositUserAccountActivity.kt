@@ -2,7 +2,10 @@ package com.letung.parkinglot.feature.depositUserAccount
 
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
@@ -13,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.*
 import com.letung.parkinglot.R
+import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.feature.depositUserAccount.adapter.BankAdapter
 import com.letung.parkinglot.model.UserBank
 import kotlinx.android.synthetic.main.activity_deposit_user_account.*
@@ -23,6 +27,7 @@ import java.util.*
 
 class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickListener {
     private lateinit var database: DatabaseReference
+    private lateinit var databaseMoney: DatabaseReference
     private lateinit var userRecyclerview: RecyclerView
     private lateinit var userArraylist: ArrayList<UserBank>
     private lateinit var tempArrayList: ArrayList<UserBank>
@@ -32,12 +37,111 @@ class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_deposit_user_account)
         database = FirebaseDatabase.getInstance().getReference("Bank")
-
+        databaseMoney = FirebaseDatabase.getInstance().getReference("Account")
         userArraylist = arrayListOf<UserBank>()
         tempArrayList = arrayListOf<UserBank>()
+        val userAccount = Account.DATA_NAME
+        readData(userAccount)
         eventListener()
         backToUserProfile()
+        checkConditionIDBank()
+        checkConditionMoney()
+        depositMoney()
+
     }
+
+    private fun checkConditionIDBank(){
+        edt_bankAccount.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(edt_bankAccount.text.toString().isEmpty()){
+                    tv_remindIDBank.text = "Không được để trống"
+                    tv_remindIDBank.visibility = View.VISIBLE
+                }else{
+                    if(edt_bankAccount.text.toString().length > 11){
+                        tv_remindIDBank.text = "Nhập sai số tài khoản"
+                        tv_remindIDBank.visibility = View.VISIBLE
+                    }else{
+                        tv_remindIDBank.visibility = View.GONE
+                    }
+                }
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+    }
+    private fun checkConditionMoney(){
+        edt_money.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(edt_money.text.toString().isEmpty()){
+                    tv_remindDepositMoney.text = "Không được để trống"
+                    tv_remindDepositMoney.visibility = View.VISIBLE
+                }else
+                    if(edt_money.text.toString().toInt() > 500000){
+                        tv_remindDepositMoney.text = "Không được nạp quá 500.000đ"
+                        tv_remindDepositMoney.visibility = View.VISIBLE
+                    }else
+                        if(edt_money.text.toString().toInt() < 30000){
+                            tv_remindDepositMoney.text = "Không được nạp ít hơn 30.000đ"
+                            tv_remindDepositMoney.visibility = View.VISIBLE
+                        }else
+                            tv_remindDepositMoney.visibility = View.GONE
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+    }
+    private fun readData(userAccount: String) {
+        databaseMoney.child(userAccount).get().addOnSuccessListener {
+            if(it.exists()){
+                val userMoney = it.child("userMoney").value.toString()
+                tv_userMoney.setText("${userMoney}")
+            }else{
+                Toast.makeText(this, "Không tồn tại", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener(){
+            Toast.makeText(this, "Truy vấn thất bại", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun depositMoney(){
+
+        btn_continueDepositMoney.setOnClickListener(){
+            if(edt_money.text.toString().isEmpty() ||
+                edt_bankAccount.text.toString().isEmpty() ||
+                edt_money.text.toString().toInt() < 30000 ||
+                edt_money.text.toString().toInt() > 500000 ||
+                edt_bankAccount.text.toString().length > 11){
+                Toast.makeText(this, "Chưa thỏa mãn các điều kiện", Toast.LENGTH_SHORT).show()
+
+            }else{
+                val userMoney = edt_money.text.toString().toInt()
+                updateUserMoney(Account.DATA_NAME, userMoney)
+            }
+        }
+
+    }
+
+    private fun updateUserMoney(dataName: String, userMoney: Int) {
+        val user = mapOf<String, Int>(
+            "userMoney" to (userMoney + tv_userMoney.text.toString().toInt())
+        )
+        databaseMoney.child(dataName).updateChildren(user).addOnSuccessListener {
+            tv_userMoney.text = "${userMoney + tv_userMoney.text.toString().toInt()}"
+            edt_money.text.clear()
+            edt_bankAccount.text.clear()
+            edt_bank.text = ""
+            tv_remindDepositMoney.visibility = View.GONE
+            tv_remindIDBank.visibility = View.GONE
+            Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener{
+            Toast.makeText(this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     private fun getUserData() {
         database.addValueEventListener(object : ValueEventListener {
@@ -75,7 +179,7 @@ class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickL
         userArraylist = arrayListOf<UserBank>()
         getUserData()
         //set Height for dialog
-        dialog.behavior.maxHeight = 1500
+        dialog.behavior.maxHeight = 1800
         dialog.behavior.peekHeight = dialog.behavior.maxHeight
         dialog.show()
         val searchBank = view.searchView
@@ -128,6 +232,7 @@ class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickL
 
     private fun eventListener(){
         edt_bank.setOnClickListener(){
+            tempArrayList.clear()
             showBottomSheet()
         }
     }
@@ -145,7 +250,7 @@ class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickL
 
     override fun onItemClick(name: String, img: String) {
         dialog.dismiss()
-        edt_bank.text = "khoa bu lon ${name}"
+        edt_bank.text = "${name}"
         Glide.with(this@depositUserAccountActivity).load(img).into(img_bank)
     }
 
