@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.userListParkingLot.UserListParkingActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_passer_header"
+        android:elevation="20dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="15dp">
+
+        <ImageButton
+            android:id="@+id/imgbtn_backToMainActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:src="@drawable/ic_passer_header_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Lịch sử đặt ô đỗ"
+            android:textAlignment="center"
+            android:textColor="@color/mainColor"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/bg_searchview"
+        app:iconifiedByDefault="false"
+        app:queryHint="Tìm kiếm vị trí đỗ..." />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchView"
+        tools:listitem="@layout/user_parkinglot_list"/>
+</RelativeLayout>

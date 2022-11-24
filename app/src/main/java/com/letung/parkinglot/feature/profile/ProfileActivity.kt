@@ -15,6 +15,7 @@ import com.letung.parkinglot.feature.main.MainActivity
 import com.letung.parkinglot.feature.signIn.SignInActivity
 import com.letung.parkinglot.feature.updateprofile.UpdateProfileActivity
 import com.letung.parkinglot.feature.userListCar.UserListCarActivity
+import com.letung.parkinglot.feature.userListParkingLot.UserListParkingActivity
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlin.system.exitProcess
 
@@ -32,6 +33,7 @@ class ProfileActivity : AppCompatActivity() {
         moveToListCar()
         moveToSignInActivity()
         moveToDepositUserAccount()
+        moveToUserParkingLotList()
         backToMainActivity()
     }
 
@@ -105,6 +107,12 @@ class ProfileActivity : AppCompatActivity() {
 //            moveTaskToBack(true);
 //            exitProcess(-1)
             finishAffinity()
+        }
+    }
+
+    private fun moveToUserParkingLotList(){
+        edt_History.setOnClickListener(){
+            startActivity(Intent(this, UserListParkingActivity::class.java))
         }
     }
 
