@@ -1,13 +1,16 @@
 package com.letung.parkinglot.feature.detail
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.letung.parkinglot.R
+import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.extension.App
 import com.letung.parkinglot.feature.invoice.InvoiceActivity
 import com.letung.parkinglot.model.Invoice
@@ -19,16 +22,24 @@ import java.time.format.DateTimeFormatter
 
 class DetailActivity : AppCompatActivity() {
 
+    private lateinit var database: DatabaseReference
+    private lateinit var databaseCar: DatabaseReference
     private lateinit var guestDatabase: DatabaseReference
     private lateinit var slotDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        database = FirebaseDatabase.getInstance().getReference("Account")
+        databaseCar = FirebaseDatabase.getInstance().getReference("Account/${Account.DATA_NAME}/userCar")
 
         eventListener()
-        setUpInfomation()
+        if (Account.CODE_ISUSER){
+            setUpInfomation()
+        }
+        setUpDetailInvoice()
         setUpDatabase()
+        backToParkingLot()
     }
 
     private fun getStartTime(): String {
@@ -56,15 +67,41 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpInfomation() {
-        nameTextView.text = App.DATA_NAME
-        phoneNumberTextView.text = App.DATA_PHONENUMBER
-        identityTextView.text = App.DATA_ID
-        positionTextView.text = App.DATA_POSITION.toString()
-        identityCarTextView.text = App.DATA_IDCAR
-        typeTextView.text = App.DATA_TYPE
-        startTextView.text = "${getStartTime()} giờ (${getCurrentDate()})"
-        priceTextView.text =
-            "Tổng tiền: ${formatMoney(hourTextView.text.toString().toInt() * App.DATA_PRICE)} VNĐ"
+        database.child(Account.DATA_NAME).get().addOnSuccessListener {
+            if(it.exists()){
+                //Account.DATA_NAME = it.child("userName").value.toString()
+                Account.DATA_PHONENUMBER = it.child("userName").value.toString() //lỗi đặt tên biến => đảo tên biến
+                Account.DATA_ID = it.child("userIdentity").value.toString()
+                setUpDetailInvoice()
+            }else{
+                Toast.makeText(this, "Không tồn tại", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener(){
+            Toast.makeText(this, "Truy vấn thất bại", Toast.LENGTH_SHORT).show()
+        }
+//        nameTextView.text = App.DATA_NAME
+//        phoneNumberTextView.text = App.DATA_PHONENUMBER
+//        identityTextView.text = App.DATA_ID
+//        positionTextView.text = App.DATA_POSITION.toString()
+//        identityCarTextView.text = App.DATA_IDCAR
+//        typeTextView.text = App.DATA_TYPE
+//        startTextView.text = "${getStartTime()} giờ (${getCurrentDate()})"
+//        priceTextView.text =
+//            "Tổng tiền: ${formatMoney(hourTextView.text.toString().toInt() * App.DATA_PRICE)} VNĐ"
+    }
+
+    private fun setUpDetailInvoice(){
+        nameTextView.text = Account.DATA_PHONENUMBER //lỗi đặt tên biến => đảo tên biến
+        phoneNumberTextView.text = Account.DATA_NAME //lỗi đặt tên biến => đảo tên biến
+        identityTextView.text = Account.DATA_ID
+        identityCarTextView.text = Account.DATA_IDCAR
+        typeTextView.text = Account.DATA_CARTYPE
+//        positionTextView.text = App.DATA_POSITION.toString()
+//        identityCarTextView.text = App.DATA_IDCAR
+//        typeTextView.text = App.DATA_TYPE
+//        startTextView.text = "${getStartTime()} giờ (${getCurrentDate()})"
+//        priceTextView.text =
+//            "Tổng tiền: ${formatMoney(hourTextView.text.toString().toInt() * App.DATA_PRICE)} VNĐ"
     }
 
     private fun setUpDatabase() {
@@ -154,5 +191,15 @@ class DetailActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    private fun backToParkingLot(){
+        imgbtn_backToParkingLot.setOnClickListener(){
+            onBackPressed()
+        }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

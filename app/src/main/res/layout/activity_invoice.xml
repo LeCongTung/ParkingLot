@@ -32,7 +32,7 @@
             android:background="@color/white"
             android:padding="5dp"
             android:src="@drawable/ic_camera"
-            app:tint="@color/supportBlue" />
+            app:tint="@color/mainColor" />
     </RelativeLayout>
 
     <LinearLayout

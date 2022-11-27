@@ -31,6 +31,7 @@ class SpashScreenActivity : AppCompatActivity() {
 //    Cách 1
         CoroutineScope(Dispatchers.Main).launch {
             delay(3000)
+            Account.CODE_ISUSER = true
             startActivity(Intent(this@SpashScreenActivity, MainActivity::class.java))
             finish()
         }

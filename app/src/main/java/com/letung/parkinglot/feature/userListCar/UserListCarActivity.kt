@@ -2,22 +2,19 @@ package com.letung.parkinglot.feature.userListCar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.contains
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.letung.parkinglot.R
 import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.feature.userListCar.adapter.CarAdapter
-import com.letung.parkinglot.model.User
 import com.letung.parkinglot.model.UserCar
 import kotlinx.android.synthetic.main.activity_user_list_car.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class UserListCarActivity : AppCompatActivity() {
+class UserListCarActivity : AppCompatActivity(), CarAdapter.onItemClickListener {
     private lateinit var database : DatabaseReference
     private lateinit var userRecyclerview : RecyclerView
     private lateinit var userArraylist : ArrayList<UserCar>
@@ -47,7 +44,7 @@ class UserListCarActivity : AppCompatActivity() {
                         userArraylist.add(user!!)
                         tempArraylist.add(user!!)
                     }
-                    userRecyclerview.adapter = CarAdapter(tempArraylist)
+                    userRecyclerview.adapter = CarAdapter(tempArraylist, this@UserListCarActivity)
 
                 }
             }
@@ -103,5 +100,9 @@ class UserListCarActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
+    }
+
+    override fun onItemClick(carName: String, carNumber: String, carType: String) {
+
     }
 }

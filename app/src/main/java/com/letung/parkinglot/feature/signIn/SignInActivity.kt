@@ -109,6 +109,7 @@ class SignInActivity : AppCompatActivity() {
     private fun saveKey(phone: String, pass: String){
         val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
         var editor = sharedPreference.edit()
+        Account.CODE_ISUSER = true
         editor.putString(Account.CODE_DATA_PHONENUMBER,phone)
         editor.putString(Account.CODE_DATA_PASSWORD , pass)
         editor.commit()

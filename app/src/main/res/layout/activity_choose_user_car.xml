@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.userListParkingLot.UserListParkingActivity">
-
+    tools:context=".feature.chooseUserCar.ChooseUserCarActivity">
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -27,15 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="Lịch sử đặt ô đỗ"
+            android:text="Chọn xe"
             android:textAlignment="center"
             android:textColor="@color/mainColor"
             android:textSize="25sp" />
     </RelativeLayout>
-
-
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+        android:id="@+id/searchCarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
@@ -44,11 +41,12 @@
         android:layout_marginVertical="10dp"
         android:background="@drawable/bg_searchview"
         app:iconifiedByDefault="false"
-        app:queryHint="Tìm kiếm vị trí đỗ..." />
+        app:queryHint="Tìm kiếm xe..." />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userCarList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/searchView"
-        tools:listitem="@layout/user_parkinglot_list" />
+        android:layout_below="@+id/searchCarView"
+        tools:listitem="@layout/user_carlist" />
 </RelativeLayout>

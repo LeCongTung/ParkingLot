@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.letung.parkinglot.R
 import com.letung.parkinglot.extension.Account
+import com.letung.parkinglot.feature.chooseUserCar.ChooseUserCarActivity
 import com.letung.parkinglot.feature.parking.ParkingActivity
 import com.letung.parkinglot.feature.profile.ProfileActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,13 +20,13 @@ class MainActivity : AppCompatActivity() {
     }
     private fun eventListener(){
         btn_moveToProfile.setOnClickListener(){
-            Toast.makeText(this, "chuyển sang ${Account.DATA_NAME}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "chuyển sang ${Account.DATA_NAME}", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
         btn_moveToParking.setOnClickListener(){
-            Toast.makeText(this, "chuyển sang ${Account.DATA_NAME}", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, ParkingActivity::class.java))
+//            Toast.makeText(this, "chuyển sang ${Account.DATA_NAME}", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ChooseUserCarActivity::class.java))
         }
     }
 

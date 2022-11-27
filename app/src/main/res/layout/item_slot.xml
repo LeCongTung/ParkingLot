@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_car_top_view"
             android:padding="20dp"
-            app:tint="@color/supportBlue"/>
+            app:tint="@color/mainColor"/>
 
         <TextView
             android:id="@+id/positionTextView"
@@ -30,7 +30,7 @@
             android:text="@string/testView"
             android:textAlignment="center"
             android:textSize="12sp"
-            android:background="@color/supportBlue"
+            android:background="@color/mainColor"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:paddingVertical="5dp"

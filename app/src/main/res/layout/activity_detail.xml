@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".feature.detail.DetailActivity">
 
     <RelativeLayout
@@ -16,8 +17,7 @@
         android:paddingVertical="10dp">
 
         <ImageButton
-            android:id="@+id/backButton"
-            app:tint="@color/supportBlue"
+            android:id="@+id/imgbtn_backToParkingLot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -25,13 +25,13 @@
             android:src="@drawable/ic_passer_header_back" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:fontFamily="@font/roboto_bold"
-            android:text="CHI TIẾT HOÁ ĐƠN"
-            android:textColor="@color/supportBlue"
-            android:textSize="15sp" />
+            android:text="Chi tiết hóa đơn"
+            android:textAlignment="center"
+            android:textColor="@color/mainColor"
+            android:textSize="25sp" />
     </RelativeLayout>
 
     <ScrollView
@@ -39,27 +39,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/priceTextView"
-        android:layout_below="@id/appBar">
+        android:layout_below="@id/appBar"
+        >
 
         <LinearLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/bg_passer_body"
+            android:elevation="20dp"
             android:orientation="vertical"
-            android:padding="15dp">
+            android:padding="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
+                android:layout_marginVertical="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="Họ tên người gửi: "
-                    android:textColor="@color/supportBlue" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/nameTextView"
@@ -68,21 +74,23 @@
                     android:gravity="end"
                     android:text="@string/testView"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="Số điện thoại: "
-                    android:textColor="@color/supportBlue" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/phoneNumberTextView"
@@ -91,21 +99,23 @@
                     android:gravity="end"
                     android:text="@string/testView"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="CMND/CCCD: "
-                    android:textColor="@color/supportBlue" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/identityTextView"
@@ -114,21 +124,23 @@
                     android:gravity="end"
                     android:text="@string/testView"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="Vị Trí: "
-                    android:textColor="@color/supportBlue" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/positionTextView"
@@ -137,21 +149,23 @@
                     android:gravity="end"
                     android:text="@string/testView"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="Biển số xe: "
-                    android:textColor="@color/supportBlue" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/identityCarTextView"
@@ -160,21 +174,23 @@
                     android:gravity="end"
                     android:text="@string/testView"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="Loại xe: "
-                    android:textColor="@color/supportBlue" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/typeTextView"
@@ -183,21 +199,23 @@
                     android:gravity="end"
                     android:text="@string/testView"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
                     android:text="Giờ bắt đầu: "
-                    android:textColor="@color/supportBlue" />
+                    android:textColor="@color/mainColor"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/startTextView"
@@ -206,7 +224,7 @@
                     android:gravity="end"
                     android:text="@string/testView"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -214,9 +232,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/roboto_bold"
                 android:text="Số giờ đặt"
                 android:textAlignment="center"
                 android:textColor="@color/black"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -297,11 +317,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/bg_passer_body_btn"
+        android:fontFamily="@font/roboto_bold"
         android:text="Xác nhận"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="20dp" />
 </RelativeLayout>

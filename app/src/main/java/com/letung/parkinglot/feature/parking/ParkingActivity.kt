@@ -17,14 +17,17 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.google.firebase.database.*
 import com.letung.parkinglot.R
+import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.extension.App
 import com.letung.parkinglot.feature.customer.passer.fill_information.fillInformation
 import com.letung.parkinglot.feature.customer.passer.register_parkingLot.register_parkinglot
 import com.letung.parkinglot.feature.detail.DetailActivity
 import com.letung.parkinglot.feature.parking.adapter.ParkingAdapter
 import com.letung.parkinglot.model.Slot
+import kotlinx.android.synthetic.main.activity_choose_user_car.*
 import kotlinx.android.synthetic.main.activity_fill_information.*
 import kotlinx.android.synthetic.main.activity_parking.*
+import kotlinx.android.synthetic.main.activity_parking.imgbtn_backToMainActivity
 import kotlinx.android.synthetic.main.dialog_floor_area.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -48,6 +51,7 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
         setUpDatabase(floorSelected, areaSelected)
         fetchDataSlot()
         eventListener()
+        backToChooseCarActivity()
     }
 
     private fun setUpController(){
@@ -147,8 +151,8 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
         }
         dialog.acceptButton.setOnClickListener {
             if (canPark){
-                App.DATA_POSITION = item.position!!
-                App.DATA_PRICE = 30000
+                Account.DATA_POSITION = item.position!!
+                Account.DATA_PRICE = 30000
                 val intent = Intent(this, DetailActivity::class.java)
                 startActivityForResult(intent, 2)
             }else
@@ -158,19 +162,29 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
         dialog.show()
     }
 
-    override fun onBackPressed() {
-        val intent = Intent()
-        intent.putExtra(App.CODE_DATA_NAME, App.DATA_NAME)
-        intent.putExtra(App.CODE_DATA_PHONENUMBER, App.DATA_PHONENUMBER)
-        intent.putExtra(App.CODE_DATA_ID, App.DATA_ID)
-        intent.putExtra(App.CODE_DATA_IDCAR, App.DATA_IDCAR)
-        intent.putExtra(App.CODE_DATA_TYPE, App.DATA_TYPE)
-        setResult(Activity.RESULT_OK, intent)
-        finish()
-    }
+//    override fun onBackPressed() {
+//        val intent = Intent()
+//        intent.putExtra(Account.CODE_DATA_NAME, Account.DATA_NAME)
+//        intent.putExtra(Account.CODE_DATA_PHONENUMBER, Account.DATA_PHONENUMBER)
+//        intent.putExtra(Account.CODE_DATA_ID, Account.DATA_ID)
+//        intent.putExtra(Account.CODE_DATA_IDCAR, Account.DATA_IDCAR)
+//        intent.putExtra(Account.CODE_DATA_TYPE, Account.DATA_TYPE)
+//        setResult(Activity.RESULT_OK, intent)
+//        finish()
+//    }
 
     override fun didClickSlot(item: Slot) {
         showDialog(item)
         Log.d("tung","${item.position} - ${item.status}")
+    }
+
+    private fun backToChooseCarActivity(){
+        imgbtn_backToMainActivity.setOnClickListener(){
+            onBackPressed()
+        }
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

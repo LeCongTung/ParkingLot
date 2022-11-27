@@ -1,23 +1,24 @@
 package com.letung.parkinglot.feature.profile
 
+import android.content.Context
 import android.content.Intent
-import com.letung.parkinglot.extension.Account
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.letung.parkinglot.R
+import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.feature.addCar.AddCarActivity
 import com.letung.parkinglot.feature.changepassword.ChangePasswordActivity
 import com.letung.parkinglot.feature.depositUserAccount.depositUserAccountActivity
-import com.letung.parkinglot.feature.main.MainActivity
 import com.letung.parkinglot.feature.signIn.SignInActivity
 import com.letung.parkinglot.feature.updateprofile.UpdateProfileActivity
 import com.letung.parkinglot.feature.userListCar.UserListCarActivity
 import com.letung.parkinglot.feature.userListParkingLot.UserListParkingActivity
 import kotlinx.android.synthetic.main.activity_profile.*
-import kotlin.system.exitProcess
+
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var databaseMoney : DatabaseReference
@@ -35,6 +36,11 @@ class ProfileActivity : AppCompatActivity() {
         moveToDepositUserAccount()
         moveToUserParkingLotList()
         backToMainActivity()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        setUserMoney(Account.DATA_NAME)
     }
 
     private fun setUserMoney(dataName: String) {
@@ -106,6 +112,10 @@ class ProfileActivity : AppCompatActivity() {
             //=> crack app
 //            moveTaskToBack(true);
 //            exitProcess(-1)
+            val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
+            sharedPreference.edit().remove(Account.CODE_DATA_PHONENUMBER).commit()
+            sharedPreference.edit().remove(Account.CODE_DATA_PASSWORD).commit()
+            Account.CODE_ISUSER = false
             finishAffinity()
         }
     }

@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.letung.parkinglot.R
+import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.extension.App
 import com.letung.parkinglot.feature.parking.ParkingActivity
 import kotlinx.android.synthetic.main.activity_fill_information.*
@@ -60,9 +61,9 @@ class fillInformation : AppCompatActivity() {
     private fun eventListener(){
         btn_continue.setOnClickListener {
             if (checkCondition()){
-                App.DATA_NAME = edt_name.text.toString()
-                App.DATA_PHONENUMBER = edt_phone.text.toString()
-                App.DATA_ID = edt_identity.text.toString()
+                Account.DATA_NAME = edt_name.text.toString()
+                Account.DATA_PHONENUMBER = edt_phone.text.toString()
+                Account.DATA_ID = edt_identity.text.toString()
                 App.DATA_IDCAR = edt_identityCar.text.toString()
                 App.DATA_TYPE = typeChoice
                 val intent = Intent(this, ParkingActivity::class.java)

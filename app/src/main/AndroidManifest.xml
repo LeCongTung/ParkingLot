@@ -21,6 +21,9 @@
         android:theme="@style/DefaultTheme"
         tools:targetApi="31">
         <activity
+            android:name=".feature.chooseUserCar.ChooseUserCarActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.userListParkingLot.UserListParkingActivity"
             android:exported="false" />
         <activity
