@@ -22,8 +22,10 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.qrcode.QRCodeWriter
 import com.letung.parkinglot.R
+import com.letung.parkinglot.extension.Account
 import com.letung.parkinglot.extension.App
 import com.letung.parkinglot.feature.customer.passer.fill_information.fillInformation
+import com.letung.parkinglot.feature.main.MainActivity
 import kotlinx.android.synthetic.main.activity_invoice.*
 import java.io.File
 import java.io.FileOutputStream
@@ -32,6 +34,7 @@ import java.io.OutputStream
 class InvoiceActivity : AppCompatActivity() {
 
     private lateinit var guestDatabase: DatabaseReference
+    private lateinit var userDatabase : DatabaseReference
     var idTicket: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,21 +65,37 @@ class InvoiceActivity : AppCompatActivity() {
 
     private fun setUpDatabase() {
         guestDatabase = FirebaseDatabase.getInstance().getReference("Guest")
+        userDatabase = FirebaseDatabase.getInstance().getReference("Account/${Account.DATA_NAME}/userParkingSlot")
     }
 
     private fun setUpBill(){
-        idTicket = intent.getStringExtra(App.CODE_ID_TICKET).toString()
+        idTicket = intent.getStringExtra(Account.CODE_ID_TICKET).toString()
         Log.d("sos", idTicket)
-        guestDatabase.child(idTicket).get().addOnSuccessListener {
-            if (it.exists()){
-                tv_name.text = it.child("name").value.toString().trim()
-                tv_phone.text = it.child("phoneNumber").value.toString().trim()
-                tv_id.text = it.child("identity").value.toString().trim()
-                tv_licensePlate.text = it.child("identityCar").value.toString().trim()
-                tv_regiserDay.text = it.child("startTime").value.toString().trim()
-                positionTextView.text = it.child("position").value.toString().trim()
-                tv_hourParking.text = it.child("hoursParking").value.toString().trim()
-                tv_totalBill.text = it.child("totalPrice").value.toString().trim()
+        if(Account.CODE_ISUSER){
+            userDatabase.child(idTicket).get().addOnSuccessListener {
+                if (it.exists()){
+                    tv_name.text = it.child("name").value.toString().trim()
+                    tv_phone.text = it.child("phoneNumber").value.toString().trim()
+                    tv_id.text = it.child("identity").value.toString().trim()
+                    tv_licensePlate.text = it.child("identityCar").value.toString().trim()
+                    tv_regiserDay.text = it.child("startTime").value.toString().trim()
+                    positionTextView.text = it.child("position").value.toString().trim()
+                    tv_hourParking.text = it.child("hoursParking").value.toString().trim()
+                    tv_totalBill.text = it.child("totalPrice").value.toString().trim()
+                }
+            }
+        }else{
+            guestDatabase.child(idTicket).get().addOnSuccessListener {
+                if (it.exists()){
+                    tv_name.text = it.child("name").value.toString().trim()
+                    tv_phone.text = it.child("phoneNumber").value.toString().trim()
+                    tv_id.text = it.child("identity").value.toString().trim()
+                    tv_licensePlate.text = it.child("identityCar").value.toString().trim()
+                    tv_regiserDay.text = it.child("startTime").value.toString().trim()
+                    positionTextView.text = it.child("position").value.toString().trim()
+                    tv_hourParking.text = it.child("hoursParking").value.toString().trim()
+                    tv_totalBill.text = it.child("totalPrice").value.toString().trim()
+                }
             }
         }
     }
@@ -92,9 +111,13 @@ class InvoiceActivity : AppCompatActivity() {
         }
 
         btn_backHome.setOnClickListener {
-            val intent = Intent(this, fillInformation::class.java)
-            startActivity(intent)
-            finish()
+            if(Account.CODE_ISUSER){
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }else{
+                startActivity(Intent(this, fillInformation::class.java))
+                finish()
+            }
         }
     }
 

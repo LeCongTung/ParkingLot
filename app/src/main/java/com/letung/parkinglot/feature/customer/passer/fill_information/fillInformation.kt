@@ -64,8 +64,8 @@ class fillInformation : AppCompatActivity() {
                 Account.DATA_NAME = edt_name.text.toString()
                 Account.DATA_PHONENUMBER = edt_phone.text.toString()
                 Account.DATA_ID = edt_identity.text.toString()
-                App.DATA_IDCAR = edt_identityCar.text.toString()
-                App.DATA_TYPE = typeChoice
+                Account.DATA_IDCAR = edt_identityCar.text.toString()
+                Account.DATA_CARTYPE = typeChoice
                 val intent = Intent(this, ParkingActivity::class.java)
                 startActivityForResult(intent, 1)
             }
@@ -78,7 +78,7 @@ class fillInformation : AppCompatActivity() {
         when {
             (requestCode == 1 && resultCode == Activity.RESULT_OK) -> {
                 data?.let {
-                    Log.d("tung123", "${App.DATA_NAME} ${App.DATA_PHONENUMBER} ${App.DATA_ID} ${App.DATA_IDCAR} ${App.DATA_TYPE} back")
+                    Log.d("tung123", "${Account.DATA_NAME} ${Account.DATA_PHONENUMBER} ${Account.DATA_ID} ${Account.DATA_IDCAR} ${Account.DATA_CARTYPE} back")
                 }
             }
         }

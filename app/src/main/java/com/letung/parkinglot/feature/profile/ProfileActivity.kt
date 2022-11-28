@@ -18,6 +18,8 @@ import com.letung.parkinglot.feature.updateprofile.UpdateProfileActivity
 import com.letung.parkinglot.feature.userListCar.UserListCarActivity
 import com.letung.parkinglot.feature.userListParkingLot.UserListParkingActivity
 import kotlinx.android.synthetic.main.activity_profile.*
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 
 class ProfileActivity : AppCompatActivity() {
@@ -43,11 +45,15 @@ class ProfileActivity : AppCompatActivity() {
         setUserMoney(Account.DATA_NAME)
     }
 
+    private fun formatMoney(money : Int):String{
+        val formatter : NumberFormat = DecimalFormat("#,###")
+        return formatter.format(money)
+    }
     private fun setUserMoney(dataName: String) {
         databaseMoney.child(dataName).get().addOnSuccessListener { 
             if(it.exists()){
-                val userMoney = it.child("userMoney").value.toString()
-                tv_accountMoney2.text = userMoney
+                val userMoney = it.child("userMoney").value.toString().toInt()
+                tv_accountMoney2.text = "${formatMoney(userMoney)}"
             }else{
                 Toast.makeText(this, "Không tồn tại", Toast.LENGTH_SHORT).show()
             }

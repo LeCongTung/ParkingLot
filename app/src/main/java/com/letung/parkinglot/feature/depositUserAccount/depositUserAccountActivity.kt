@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,8 @@ import kotlinx.android.synthetic.main.activity_deposit_user_account.*
 import kotlinx.android.synthetic.main.user_banklist.view.*
 import kotlin.collections.ArrayList
 import kotlinx.android.synthetic.main.user_bottom_sheet.view.*
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.util.*
 
 class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickListener {
@@ -48,6 +51,11 @@ class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickL
         checkConditionMoney()
         depositMoney()
 
+    }
+
+    private fun formatMoney(money: Int) : String {
+        val formatter: NumberFormat = DecimalFormat("#,###")
+        return formatter.format(money)
     }
 
     private fun checkConditionIDBank(){
@@ -97,8 +105,9 @@ class depositUserAccountActivity : AppCompatActivity(), BankAdapter.onItemClickL
     private fun readData(userAccount: String) {
         databaseMoney.child(userAccount).get().addOnSuccessListener {
             if(it.exists()){
-                val userMoney = it.child("userMoney").value.toString()
-                tv_userMoney.setText("${userMoney}")
+                val userMoney = it.child("userMoney").value.toString().toInt()
+                //tv_userMoney.text = "${formatMoney(userMoney)}" //đổi sang money
+                tv_userMoney.text = "${userMoney}"
             }else{
                 Toast.makeText(this, "Không tồn tại", Toast.LENGTH_SHORT).show()
             }

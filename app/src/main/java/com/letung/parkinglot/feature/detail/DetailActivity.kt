@@ -26,12 +26,14 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var databaseCar: DatabaseReference
     private lateinit var guestDatabase: DatabaseReference
     private lateinit var slotDatabase: DatabaseReference
+    private lateinit var userDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         database = FirebaseDatabase.getInstance().getReference("Account")
         databaseCar = FirebaseDatabase.getInstance().getReference("Account/${Account.DATA_NAME}/userCar")
+        userDatabase = FirebaseDatabase.getInstance().getReference("Account/${Account.DATA_NAME}/userParkingSlot")
 
         eventListener()
         if (Account.CODE_ISUSER){
@@ -58,7 +60,7 @@ class DetailActivity : AppCompatActivity() {
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
 
-        return current.format(formatter) + App.DATA_IDCAR + current.format(formatter)
+        return current.format(formatter) + Account.DATA_IDCAR + current.format(formatter)
     }
 
     private fun formatMoney(money: Int): String {
@@ -83,7 +85,7 @@ class DetailActivity : AppCompatActivity() {
 //        phoneNumberTextView.text = App.DATA_PHONENUMBER
 //        identityTextView.text = App.DATA_ID
 //        positionTextView.text = App.DATA_POSITION.toString()
-//        identityCarTextView.text = App.DATA_IDCAR
+//        identityCarTextView.text = Account.DATA_IDCAR
 //        typeTextView.text = App.DATA_TYPE
 //        startTextView.text = "${getStartTime()} giờ (${getCurrentDate()})"
 //        priceTextView.text =
@@ -96,12 +98,12 @@ class DetailActivity : AppCompatActivity() {
         identityTextView.text = Account.DATA_ID
         identityCarTextView.text = Account.DATA_IDCAR
         typeTextView.text = Account.DATA_CARTYPE
-//        positionTextView.text = App.DATA_POSITION.toString()
+        positionTextView.text = Account.DATA_POSITION.toString()
 //        identityCarTextView.text = App.DATA_IDCAR
 //        typeTextView.text = App.DATA_TYPE
-//        startTextView.text = "${getStartTime()} giờ (${getCurrentDate()})"
-//        priceTextView.text =
-//            "Tổng tiền: ${formatMoney(hourTextView.text.toString().toInt() * App.DATA_PRICE)} VNĐ"
+        startTextView.text = "${getStartTime()} giờ (${getCurrentDate()})"
+        priceTextView.text =
+            "Tổng tiền: ${formatMoney(hourTextView.text.toString().toInt() * Account.DATA_PRICE)} VNĐ"
     }
 
     private fun setUpDatabase() {
@@ -113,7 +115,7 @@ class DetailActivity : AppCompatActivity() {
         var updateStatus = mapOf<String, String>(
             "status" to "parking"
         )
-        slotDatabase.child("A${App.DATA_POSITION}").updateChildren(updateStatus)
+        slotDatabase.child("A${Account.DATA_POSITION}").updateChildren(updateStatus)
     }
 
     @SuppressLint("SetTextI18n")
@@ -127,7 +129,7 @@ class DetailActivity : AppCompatActivity() {
                 Toast.makeText(this, "Tối thiểu ít nhất 1 giờ", Toast.LENGTH_SHORT).show()
             priceTextView.text = "Tổng tiền: ${
                 formatMoney(
-                    hourTextView.text.toString().toInt() * App.DATA_PRICE
+                    hourTextView.text.toString().toInt() * Account.DATA_PRICE
                 )
             } VNĐ"
         }
@@ -137,7 +139,7 @@ class DetailActivity : AppCompatActivity() {
                 hourTextView.text = "${hourTextView.text.toString().toInt() - 1}"
                 priceTextView.text = "Tổng tiền: ${
                     formatMoney(
-                        hourTextView.text.toString().toInt() * App.DATA_PRICE
+                        hourTextView.text.toString().toInt() * Account.DATA_PRICE
                     )
                 } VNĐ"
             } else
@@ -150,7 +152,7 @@ class DetailActivity : AppCompatActivity() {
                 hourTextView.text = "${hourTextView.text.toString().toInt() + 1}"
                 priceTextView.text = "Tổng tiền: ${
                     formatMoney(
-                        hourTextView.text.toString().toInt() * App.DATA_PRICE
+                        hourTextView.text.toString().toInt() * Account.DATA_PRICE
                     )
                 } VNĐ"
             } else
@@ -165,7 +167,7 @@ class DetailActivity : AppCompatActivity() {
                 hourTextView.text = "48"
             if (hourTextView.text.toString().toInt() == 48)
                 Toast.makeText(this, "Tối đa nhiều nhất 48 giờ", Toast.LENGTH_SHORT).show()
-            priceTextView.text = "Tổng tiền: ${formatMoney(hourTextView.text.toString().toInt() * App.DATA_PRICE)} VNĐ"
+            priceTextView.text = "Tổng tiền: ${formatMoney(hourTextView.text.toString().toInt() * Account.DATA_PRICE)} VNĐ"
         }
 
         comfirmButton.setOnClickListener {
@@ -173,25 +175,38 @@ class DetailActivity : AppCompatActivity() {
             comfirmButton.isEnabled = false
             val invoice = Invoice(
                 getID,
-                App.DATA_NAME,
-                App.DATA_PHONENUMBER,
-                App.DATA_ID,
-                "A${App.DATA_POSITION}",
-                App.DATA_IDCAR,
-                App.DATA_TYPE,
+                Account.DATA_NAME,
+                Account.DATA_PHONENUMBER,
+                Account.DATA_ID,
+                "A${Account.DATA_POSITION}",
+                Account.DATA_IDCAR,
+                Account.DATA_CARTYPE,
                 startTextView.text.toString(),
                 hourTextView.text.toString().toInt(),
-                hourTextView.text.toString().toInt() * App.DATA_PRICE
+                hourTextView.text.toString().toInt() * Account.DATA_PRICE
             )
-            guestDatabase.child(getCodeTicket()).setValue(invoice).addOnCompleteListener {
-                updateStatus()
-                val intent = Intent(this, InvoiceActivity::class.java)
-                intent.putExtra(App.CODE_ID_TICKET, getID)
-                startActivity(intent)
-                finish()
+            if(Account.CODE_ISUSER){
+                userDatabase.child(getCodeTicket()).setValue(invoice).addOnCompleteListener {
+                    updateStatus()
+                    val intent = Intent(this, InvoiceActivity::class.java)
+                    intent.putExtra(Account.CODE_ID_TICKET, getID)
+                    Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                    finish()
+                }
+            }else{
+                guestDatabase.child(getCodeTicket()).setValue(invoice).addOnCompleteListener {
+                    updateStatus()
+                    val intent = Intent(this, InvoiceActivity::class.java)
+                    intent.putExtra(Account.CODE_ID_TICKET, getID)
+                    Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
     }
+
 
     private fun backToParkingLot(){
         imgbtn_backToParkingLot.setOnClickListener(){

@@ -140,7 +140,7 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
                 canPark = false
             }
             else -> {
-                dialog.statusTextView.setTextColor(ContextCompat.getColor(this, R.color.supportBlue))
+                dialog.statusTextView.setTextColor(ContextCompat.getColor(this, R.color.mainColor))
                 dialog.statusTextView.text = "Còn trống"
                 canPark = true
             }
@@ -185,6 +185,13 @@ class ParkingActivity : AppCompatActivity(), ParkingAdapter.onSlotListener {
     }
     override fun onBackPressed() {
         super.onBackPressed()
+        val intent = Intent()
+        intent.putExtra(Account.CODE_DATA_NAME, Account.DATA_NAME)
+        intent.putExtra(Account.CODE_DATA_PHONENUMBER, Account.DATA_PHONENUMBER)
+        intent.putExtra(Account.CODE_DATA_ID, Account.DATA_ID)
+        intent.putExtra(Account.CODE_DATA_IDCAR, Account.DATA_IDCAR)
+        intent.putExtra(Account.CODE_DATA_CARTYPE, Account.DATA_CARTYPE)
+        setResult(Activity.RESULT_OK, intent)
         finish()
     }
 }
