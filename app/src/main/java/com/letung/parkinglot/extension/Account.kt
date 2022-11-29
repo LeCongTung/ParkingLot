@@ -18,11 +18,13 @@ class Account : Application() {
         var DATA_ID = ""
         val CODE_DATA_IDCAR = "CODE_DATA_IDCAR"
         var DATA_IDCAR = ""
-        val CODE_DATA_CARTYPE = "CODE_DATA_TYPE"
+        val CODE_DATA_CARTYPE = "CODE_DATA_CARTYPE"
         var DATA_CARTYPE = ""
-        val CODE_DATA_CARNAME = "CODE_DATA_TYPE"
+        val CODE_DATA_CARNAME = "CODE_DATA_CARNAME"
         var DATA_CARNAME = ""
         var DATA_POSITION = 0
         var DATA_PRICE = 0
+        val CODE_DATA_USERMONEY = "CODE_DATA_USERMONEY"
+        var DATA_USERMONEY = ""
     }
 }

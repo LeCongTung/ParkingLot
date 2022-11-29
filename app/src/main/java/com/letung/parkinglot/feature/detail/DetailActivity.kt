@@ -1,8 +1,10 @@
 package com.letung.parkinglot.feature.detail
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -15,6 +17,7 @@ import com.letung.parkinglot.extension.App
 import com.letung.parkinglot.feature.invoice.InvoiceActivity
 import com.letung.parkinglot.model.Invoice
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.dialog_moneywarning.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.time.LocalDateTime
@@ -171,30 +174,40 @@ class DetailActivity : AppCompatActivity() {
         }
 
         comfirmButton.setOnClickListener {
+            val totalMoney = "${hourTextView.text.toString().toInt() * Account.DATA_PRICE}"
             val getID = getCodeTicket()
-            comfirmButton.isEnabled = false
+            //comfirmButton.isEnabled = false
             val invoice = Invoice(
                 getID,
-                Account.DATA_NAME,
                 Account.DATA_PHONENUMBER,
+                Account.DATA_NAME,
                 Account.DATA_ID,
                 "A${Account.DATA_POSITION}",
                 Account.DATA_IDCAR,
                 Account.DATA_CARTYPE,
                 startTextView.text.toString(),
                 hourTextView.text.toString().toInt(),
-                hourTextView.text.toString().toInt() * Account.DATA_PRICE
+                //hourTextView.text.toString().toInt() * Account.DATA_PRICE
+                totalMoney.toInt()
             )
             if(Account.CODE_ISUSER){
-                userDatabase.child(getCodeTicket()).setValue(invoice).addOnCompleteListener {
-                    updateStatus()
-                    val intent = Intent(this, InvoiceActivity::class.java)
-                    intent.putExtra(Account.CODE_ID_TICKET, getID)
-                    Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
-                    startActivity(intent)
-                    finish()
+                if(totalMoney.toInt() > Account.DATA_USERMONEY.toInt()){
+                    setMoneyDialog(totalMoney.toInt(), Account.DATA_USERMONEY.toInt())
+                }else{
+                    val money = "${Account.DATA_USERMONEY.toInt() - totalMoney.toInt()}"
+                    updateUserMoney(Account.DATA_NAME, money.toInt())
+                    comfirmButton.isEnabled = false
+                    userDatabase.child(getCodeTicket()).setValue(invoice).addOnCompleteListener {
+                        updateStatus()
+                        val intent = Intent(this, InvoiceActivity::class.java)
+                        intent.putExtra(Account.CODE_ID_TICKET, getID)
+                        Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
+                        startActivity(intent)
+                        finish()
+                    }
                 }
             }else{
+                comfirmButton.isEnabled = false
                 guestDatabase.child(getCodeTicket()).setValue(invoice).addOnCompleteListener {
                     updateStatus()
                     val intent = Intent(this, InvoiceActivity::class.java)
@@ -204,6 +217,30 @@ class DetailActivity : AppCompatActivity() {
                     finish()
                 }
             }
+        }
+    }
+
+    private fun updateUserMoney(dataName: String, money: Int) {
+        val user = mapOf<String, Int>(
+            "userMoney" to money
+        )
+        database.child(dataName).updateChildren(user).addOnSuccessListener {
+        }.addOnFailureListener(){
+        }
+    }
+
+    private fun setMoneyDialog(totalMoney: Int, currentMoney: Int) {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.dialog_moneywarning)
+        if(dialog.window != null){
+            dialog!!.window!!.setBackgroundDrawable((ColorDrawable(0)))
+        }
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.tv_currentMoney.text = "${currentMoney}"
+        dialog.tv_slotMoney.text = "${totalMoney}"
+        dialog.btn_confirm.setOnClickListener(){
+            dialog.dismiss()
         }
     }
 

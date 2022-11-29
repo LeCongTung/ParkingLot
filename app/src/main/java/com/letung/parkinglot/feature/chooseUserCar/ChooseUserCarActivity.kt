@@ -22,6 +22,7 @@ import kotlin.collections.ArrayList
 
 class ChooseUserCarActivity : AppCompatActivity(), CarAdapter.onItemClickListener {
     private lateinit var database : DatabaseReference
+    private lateinit var databaseMoney : DatabaseReference
     private lateinit var userRecyclerView : RecyclerView
     private lateinit var userArraylist : ArrayList<UserCar>
     private lateinit var tempArrayList: ArrayList<UserCar>
@@ -30,6 +31,7 @@ class ChooseUserCarActivity : AppCompatActivity(), CarAdapter.onItemClickListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_user_car)
         database = FirebaseDatabase.getInstance().getReference("Account/${Account.DATA_NAME}/userCar")
+        databaseMoney = FirebaseDatabase.getInstance().getReference("Account")
         userRecyclerView = findViewById(R.id.userCarList)
         userRecyclerView.layoutManager = LinearLayoutManager(this)
         userRecyclerView.setHasFixedSize(true)
@@ -38,6 +40,7 @@ class ChooseUserCarActivity : AppCompatActivity(), CarAdapter.onItemClickListene
         tempArrayList = arrayListOf<UserCar>()
         getUserCarData()
         searchData()
+        setDataMoney(Account.DATA_NAME)
         backToMainAcitivity()
 
     }
@@ -125,12 +128,25 @@ class ChooseUserCarActivity : AppCompatActivity(), CarAdapter.onItemClickListene
             Account.DATA_IDCAR = carNumber
             Account.DATA_CARTYPE = carType
 
-            Toast.makeText(this, "Chọn thành công", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Thành công ${Account.DATA_USERMONEY}", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, ParkingActivity::class.java))
             dialog.dismiss()
         }
         dialog.btn_cancel.setOnClickListener(){
             dialog.dismiss()
+        }
+    }
+
+    private fun setDataMoney(dataName: String) {
+        databaseMoney.child(dataName).get().addOnSuccessListener {
+            if(it.exists()){
+                //val userMoney =
+                Account.DATA_USERMONEY = "${it.child("userMoney").value.toString().toInt()}"
+            }else{
+                Toast.makeText(this, "Không tồn tại", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener(){
+            Toast.makeText(this, "Truy vấn thất bại", Toast.LENGTH_SHORT).show()
         }
     }
 
