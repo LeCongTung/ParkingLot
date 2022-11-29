@@ -47,6 +47,7 @@
         app:queryHint="Tìm kiếm vị trí đỗ..." />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userParkingList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/searchView"

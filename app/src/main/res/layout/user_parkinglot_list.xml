@@ -48,7 +48,7 @@
                 android:textSize="25sp"
                 android:fontFamily="@font/product_sans_bold"/>
             <TextView
-                android:id="@+id/position"
+                android:id="@+id/tv_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/testView"
@@ -91,7 +91,7 @@
                 android:textSize="25sp"
                 android:fontFamily="@font/product_sans_bold"/>
             <TextView
-                android:id="@+id/tv_userCarType"
+                android:id="@+id/tv_startTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/testView"
@@ -133,10 +133,17 @@
                 android:textSize="25sp"
                 android:fontFamily="@font/product_sans_bold"/>
             <TextView
-                android:id="@+id/tv_parkingPrice"
+                android:id="@+id/tv_totalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/testView"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:fontFamily="@font/product_sans_regular"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="đ"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:fontFamily="@font/product_sans_regular"/>
