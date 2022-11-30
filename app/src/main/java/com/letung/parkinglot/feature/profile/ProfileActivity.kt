@@ -1,8 +1,10 @@
 package com.letung.parkinglot.feature.profile
 
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,7 @@ import com.letung.parkinglot.feature.updateprofile.UpdateProfileActivity
 import com.letung.parkinglot.feature.userListCar.UserListCarActivity
 import com.letung.parkinglot.feature.userListParkingLot.UserListParkingActivity
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.dialog_signout.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
@@ -114,15 +117,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun moveToSignInActivity(){
         edt_signOut.setOnClickListener(){
-            startActivity(Intent(this, SignInActivity::class.java))
-            //=> crack app
-//            moveTaskToBack(true);
-//            exitProcess(-1)
-            val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
-            sharedPreference.edit().remove(Account.CODE_DATA_PHONENUMBER).commit()
-            sharedPreference.edit().remove(Account.CODE_DATA_PASSWORD).commit()
-            Account.CODE_ISUSER = false
-            finishAffinity()
+            setDialogSignOUt()
         }
     }
 
@@ -137,4 +132,28 @@ class ProfileActivity : AppCompatActivity() {
         finish()
     }
 
+    private fun setDialogSignOUt(){
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.dialog_signout)
+        if(dialog.window != null){
+            dialog!!.window!!.setBackgroundDrawable(ColorDrawable(0))
+        }
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.tv_confirmSignout.text = "Xác nhận đăng xuất?"
+        dialog.btn_continueSignOUt.setOnClickListener(){
+            startActivity(Intent(this, SignInActivity::class.java))
+            //=> crack app
+//            moveTaskToBack(true);
+//            exitProcess(-1)
+            val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
+            sharedPreference.edit().remove(Account.CODE_DATA_PHONENUMBER).commit()
+            sharedPreference.edit().remove(Account.CODE_DATA_PASSWORD).commit()
+            Account.CODE_ISUSER = false
+            finishAffinity()
+        }
+        dialog.btn_cancelSignOut.setOnClickListener(){
+            dialog.dismiss()
+        }
+    }
 }
