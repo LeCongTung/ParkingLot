@@ -6,28 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".feature.main.MainActivity">
 
-    <Button
-        android:id="@+id/btn_moveToProfile"
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:background="@drawable/bg_passer_body_btn"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Hồ sơ cá nhân"
-        android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:background="@drawable/bg_passer_header"
+        android:elevation="20dp"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="15dp">
 
-    <Button
-        android:layout_below="@+id/btn_moveToProfile"
-        android:id="@+id/btn_moveToParking"
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/bg_searchview"
+            app:iconifiedByDefault="false"
+            app:queryHint="Tìm kiếm thông tin..." />
+
+        <ImageView
+            android:id="@+id/img_userProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_account_circle_user" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_option"
+        android:layout_below="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:background="@drawable/bg_passer_body_btn"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Bãi đậu"
-        android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:paddingVertical="15dp">
+        <LinearLayout
+            android:id="@+id/car_parking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <ImageView
+                android:src="@drawable/car_park"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Đặt ô đỗ"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/car_rent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <ImageView
+                android:src="@drawable/car_rent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Thuê xe"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/car_washing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <ImageView
+                android:src="@drawable/car_wash"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Rửa xe"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
 
 
 

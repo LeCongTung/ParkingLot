@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="THÔNG BÁO"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:paddingVertical="10dp"
+                android:background="@color/mainColor"/>
+            <TextView
+                android:id="@+id/tv_confirmSignout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dịch vụ sắp ra mắt"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:paddingVertical="10dp"/>
+                <Button
+                    android:id="@+id/btn_continueDismiss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:background="@drawable/bg_passer_body_btn"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Xác nhận"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:layout_marginHorizontal="100dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

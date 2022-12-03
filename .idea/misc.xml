@@ -86,6 +86,7 @@
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_passer_body_identity.xml" value="0.226" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_password.xml" value="0.1735" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/drawable/custom_ic_search.xml" value="0.215" />
+        <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_account_circle_user.xml" value="0.2115" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_addcar.xml" value="0.215" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_carnumber.xml" value="0.215" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/drawable/ic_carnumber_focused.xml" value="0.226" />
@@ -118,6 +119,7 @@
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/layout/dialog_floor_area.xml" value="0.25416666666666665" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/layout/dialog_loading.xml" value="0.25416666666666665" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/layout/dialog_moneywarning.xml" value="0.25416666666666665" />
+        <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/layout/dialog_newfeature_notice.xml" value="0.25416666666666665" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/layout/dialog_signout.xml" value="0.25416666666666665" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/layout/item_slot.xml" value="0.25416666666666665" />
         <entry key="..\:/dulieukhach/Android/Exercise/ParkingLot/app/src/main/res/layout/user_banklist.xml" value="0.25416666666666665" />
